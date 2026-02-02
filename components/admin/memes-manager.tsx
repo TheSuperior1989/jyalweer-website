@@ -23,6 +23,7 @@ import { Switch } from "@/components/ui/switch"
 import { useToast } from "@/hooks/use-toast"
 import { createClient } from "@/lib/supabase/client"
 import type { Meme } from "@/lib/types"
+import { FacebookSyncButton } from "./facebook-sync-button"
 
 interface MemesManagerProps {
   initialMemes: Meme[]
@@ -154,16 +155,18 @@ export function MemesManager({ initialMemes }: MemesManagerProps) {
           <h1 className="text-3xl font-bold text-foreground">Memes</h1>
           <p className="text-muted-foreground">Manage your meme gallery</p>
         </div>
-        <Dialog open={isDialogOpen} onOpenChange={(open) => {
-          setIsDialogOpen(open)
-          if (!open) resetForm()
-        }}>
-          <DialogTrigger asChild>
-            <Button>
-              <Plus className="mr-2 h-4 w-4" />
-              Add Meme
-            </Button>
-          </DialogTrigger>
+        <div className="flex gap-2">
+          <FacebookSyncButton />
+          <Dialog open={isDialogOpen} onOpenChange={(open) => {
+            setIsDialogOpen(open)
+            if (!open) resetForm()
+          }}>
+            <DialogTrigger asChild>
+              <Button>
+                <Plus className="mr-2 h-4 w-4" />
+                Add Meme
+              </Button>
+            </DialogTrigger>
           <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{editingMeme ? "Edit Meme" : "Add New Meme"}</DialogTitle>
@@ -243,6 +246,7 @@ export function MemesManager({ initialMemes }: MemesManagerProps) {
             </form>
           </DialogContent>
         </Dialog>
+        </div>
       </div>
 
       {memes.length === 0 ? (
