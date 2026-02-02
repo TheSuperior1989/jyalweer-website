@@ -105,17 +105,27 @@ The project uses the following main tables:
 
 See `scripts/001_create_schema.sql` for the complete schema.
 
-## 🔄 Facebook Meme Sync
+## 🔄 Facebook Integration
 
-Automatically sync memes from your Facebook page to your website!
+Display memes directly from your Facebook page on your website!
 
-See [FACEBOOK_SYNC_SETUP.md](./FACEBOOK_SYNC_SETUP.md) for detailed setup instructions.
+### Option 1: Facebook Embed (No Admin Access Required) ⭐ **ACTIVE**
 
-**Quick overview:**
-1. Create a Facebook App
-2. Get a Page Access Token
-3. Add credentials to environment variables
-4. Click "Sync from Facebook" in the admin dashboard
+The website currently uses Facebook's official embed plugins to display posts directly from the Jy Alweer Facebook page.
+
+**Benefits:**
+- ✅ No admin access needed
+- ✅ Always up-to-date automatically
+- ✅ Zero maintenance
+- ✅ Legal and compliant
+
+See [FACEBOOK_EMBED_GUIDE.md](./FACEBOOK_EMBED_GUIDE.md) for details.
+
+### Option 2: Facebook Graph API Sync (Requires Admin Access)
+
+If you have admin access to the Facebook page, you can sync memes to your database.
+
+See [FACEBOOK_SYNC_SETUP.md](./FACEBOOK_SYNC_SETUP.md) for setup instructions.
 
 ## 🎨 Project Structure
 

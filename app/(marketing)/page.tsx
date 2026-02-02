@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/home/hero-section"
 import { MemeOfDay } from "@/components/home/meme-of-day"
 import { FeaturedProducts } from "@/components/home/featured-products"
 import { NewsletterSection } from "@/components/home/newsletter-section"
+import { FacebookPagePlugin } from "@/components/memes/facebook-feed"
 import type { Meme, Product } from "@/lib/types"
 
 export default async function HomePage() {
@@ -49,6 +50,22 @@ export default async function HomePage() {
       <HeroSection />
       <MemeOfDay meme={meme} />
       <FeaturedProducts products={products} />
+
+      {/* Facebook Feed Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold mb-2">Fresh from Facebook</h2>
+            <p className="text-muted-foreground">
+              Follow us for daily memes and updates
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <FacebookPagePlugin width={500} height={600} />
+          </div>
+        </div>
+      </section>
+
       <NewsletterSection />
     </>
   )
