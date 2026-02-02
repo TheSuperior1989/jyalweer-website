@@ -49,7 +49,9 @@ export default async function MemesPage() {
               This feed shows the latest posts directly from the Jy Alweer? Facebook page.
               Always up-to-date with the freshest memes! 🔥
             </p>
-            <FacebookFeed width={800} height={1200} />
+            <div className="w-full">
+              <FacebookFeed />
+            </div>
           </div>
         </TabsContent>
 

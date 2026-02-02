@@ -17,8 +17,8 @@ interface FacebookFeedProps {
  */
 export function FacebookFeed({
   pageUrl = 'https://www.facebook.com/JyAlweer',
-  width = 500,
-  height = 800,
+  width = 1000,
+  height = 1200,
   showPosts = 10,
 }: FacebookFeedProps) {
   useEffect(() => {
@@ -45,7 +45,7 @@ export function FacebookFeed({
   return (
     <div className="w-full flex justify-center">
       <div
-        className="fb-page"
+        className="fb-page w-full"
         data-href={pageUrl}
         data-tabs="timeline"
         data-width={width}
