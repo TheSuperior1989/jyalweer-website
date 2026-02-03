@@ -79,23 +79,23 @@ export function Footer() {
             <h3 className="font-semibold text-foreground">Inligting</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-foreground">
-                  {t("footer.about")}
+                <Link href="/oor-ons" className="text-muted-foreground hover:text-foreground">
+                  Oor Ons
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-foreground">
-                  {t("footer.contact")}
+                <Link href="/kontak" className="text-muted-foreground hover:text-foreground">
+                  Kontak
                 </Link>
               </li>
               <li>
-                <Link href="/shipping" className="text-muted-foreground hover:text-foreground">
-                  {t("footer.shipping")}
+                <Link href="/versendingsbeleid" className="text-muted-foreground hover:text-foreground">
+                  Versendingsbeleid
                 </Link>
               </li>
               <li>
-                <Link href="/returns" className="text-muted-foreground hover:text-foreground">
-                  {t("footer.returns")}
+                <Link href="/terugsendings" className="text-muted-foreground hover:text-foreground">
+                  Terugsendings
                 </Link>
               </li>
             </ul>
@@ -105,13 +105,13 @@ export function Footer() {
             <h3 className="font-semibold text-foreground">Regsake / Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/privacy" className="text-muted-foreground hover:text-foreground">
-                  {t("footer.privacy")}
+                <Link href="/privaatheidsbeleid" className="text-muted-foreground hover:text-foreground">
+                  Privaatheidsbeleid
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-muted-foreground hover:text-foreground">
-                  {t("footer.terms")}
+                <Link href="/terme-en-voorwaardes" className="text-muted-foreground hover:text-foreground">
+                  Terme en Voorwaardes
                 </Link>
               </li>
             </ul>
