@@ -59,7 +59,7 @@ export function ShopGrid({ products, initialCategory = "all", initialSort = "fea
   return (
     <>
       <div className="mb-12">
-        <h1 className="mb-4 font-serif text-4xl font-bold text-foreground md:text-5xl">{t("shop.title")}</h1>
+        <h1 className="mb-4 font-display text-4xl font-black tracking-tight text-foreground md:text-5xl">{t("shop.title")}</h1>
         <p className="text-lg text-muted-foreground">
           {language === "af"
             ? "Ontdek ons versameling van Jy Alweer? produkte"
@@ -96,10 +96,24 @@ export function ShopGrid({ products, initialCategory = "all", initialSort = "fea
       </div>
 
       {products.length === 0 ? (
-        <div className="py-24 text-center">
-          <p className="text-lg text-muted-foreground">
-            {language === "af" ? "Geen produkte gevind nie" : "No products found"}
-          </p>
+        <div className="py-24 text-center space-y-6">
+          <div className="text-6xl">😬</div>
+          <div>
+            <p className="font-display text-2xl font-black tracking-tight text-foreground">
+              {language === "af" ? "Nog niks hier nie" : "Nothing here yet"}
+            </p>
+            <p className="mt-2 text-muted-foreground">
+              {language === "af"
+                ? "Ons laai tans nuwe produkte op. Kom gou weer kyk."
+                : "We're loading up new products. Check back soon."}
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            onClick={() => updateFilters("category", "all")}
+          >
+            {language === "af" ? "Wys alles" : "Show all"}
+          </Button>
         </div>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

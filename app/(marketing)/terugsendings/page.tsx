@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Card, CardContent } from "@/components/ui/card"
 
 export const metadata: Metadata = {
-  title: "Terugsendings & Terugbetalings | Jy Alweer?",
+  title: "Terugsendings & Terugbetalings",
   description: "Ons terugsendings en terugbetalingsbeleid",
 }
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Card, CardContent } from "@/components/ui/card"
 
 export const metadata: Metadata = {
-  title: "Versendingsbeleid | Jy Alweer?",
+  title: "Versendingsbeleid",
   description: "Lees meer oor ons versendingsbeleid en afleweringsopsies",
 }
 

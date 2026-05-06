@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ContactForm } from "@/components/contact/contact-form"
 
 export const metadata: Metadata = {
-  title: "Kontak Ons | Jy Alweer?",
+  title: "Kontak Ons",
   description: "Kom in kontak met die Jy Alweer? span",
 }
 

@@ -1,13 +1,11 @@
 "use client"
 
-import React from "react"
-
-import { useState } from "react"
+import React, { useState } from "react"
 import { useLanguage } from "@/lib/language-context"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
-import { Mail, Loader2, Check } from "lucide-react"
+import { Mail, Loader2, Check, Zap } from "lucide-react"
 import { subscribeToNewsletter } from "@/app/actions/newsletter"
 
 export function NewsletterSection() {
@@ -19,52 +17,58 @@ export function NewsletterSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
     if (!email) return
-
     setIsLoading(true)
-
     try {
       const result = await subscribeToNewsletter(email, language)
-
       if (result.success) {
         setIsSuccess(true)
         setEmail("")
-        toast({
-          title: t("home.newsletter.success"),
-        })
+        toast({ title: t("home.newsletter.success") })
       } else {
-        toast({
-          title: t("common.error"),
-          variant: "destructive",
-        })
+        toast({ title: t("common.error"), variant: "destructive" })
       }
     } catch {
-      toast({
-        title: t("common.error"),
-        variant: "destructive",
-      })
+      toast({ title: t("common.error"), variant: "destructive" })
     } finally {
       setIsLoading(false)
     }
   }
 
   return (
-    <section className="border-t border-border bg-primary py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4">
+    <section className="relative overflow-hidden py-20 md:py-28 section-ink">
+      {/* Decorative lime circle */}
+      <div
+        aria-hidden
+        className="absolute -right-20 top-1/2 -translate-y-1/2 h-72 w-72 rounded-full opacity-5"
+        style={{ background: "var(--lime)" }}
+      />
+      <div
+        aria-hidden
+        className="absolute -left-16 bottom-0 h-48 w-48 rounded-full opacity-5"
+        style={{ background: "var(--terra)" }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4">
         <div className="mx-auto max-w-2xl text-center">
+          {/* Icon pill */}
           <div className="mb-6 flex justify-center">
-            <div className="rounded-full bg-primary-foreground/10 p-4">
-              <Mail className="h-8 w-8 text-primary-foreground" />
+            <div
+              className="flex h-14 w-14 items-center justify-center rounded-2xl"
+              style={{ background: "var(--lime)" }}
+            >
+              <Zap className="h-7 w-7" style={{ color: "var(--ink)" }} />
             </div>
           </div>
 
-          <h2 className="mb-4 font-serif text-3xl font-bold text-primary-foreground md:text-4xl">
+          <h2 className="mb-3 font-display text-4xl font-black tracking-tight md:text-5xl" style={{ color: "var(--ink-foreground)" }}>
             {t("home.newsletter.title")}
           </h2>
-          <p className="mb-8 text-lg text-primary-foreground/80">{t("home.newsletter.subtitle")}</p>
+          <p className="mb-8 text-lg" style={{ color: "rgba(250,246,236,0.65)" }}>
+            {t("home.newsletter.subtitle")}
+          </p>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:flex-row sm:gap-2">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
             <Input
               type="email"
               placeholder={t("home.newsletter.placeholder")}
@@ -72,25 +76,35 @@ export function NewsletterSection() {
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={isLoading || isSuccess}
-              className="h-12 flex-1 border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/60 focus:border-primary-foreground"
+              className="h-12 flex-1 rounded-xl border-white/15 bg-white/8 text-white placeholder:text-white/40 focus:border-white/40 focus:bg-white/12"
             />
             <Button
               type="submit"
               disabled={isLoading || isSuccess}
-              className="h-12 bg-primary-foreground text-primary hover:bg-primary-foreground/90 sm:w-auto"
+              className="h-12 rounded-xl font-bold px-8 shrink-0"
+              style={{ background: "var(--lime)", color: "var(--ink)" }}
             >
               {isLoading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : isSuccess ? (
                 <>
                   <Check className="mr-2 h-4 w-4" />
-                  {t("home.newsletter.success")}
+                  {language === "af" ? "Ingeteken!" : "Subscribed!"}
                 </>
               ) : (
-                t("home.newsletter.button")
+                <>
+                  <Mail className="mr-2 h-4 w-4" />
+                  {t("home.newsletter.button")}
+                </>
               )}
             </Button>
           </form>
+
+          <p className="mt-4 text-sm" style={{ color: "rgba(250,246,236,0.45)" }}>
+            {language === "af"
+              ? "Geen spam nie. Jy kan enige tyd uitteken."
+              : "No spam. Unsubscribe anytime."}
+          </p>
         </div>
       </div>
     </section>

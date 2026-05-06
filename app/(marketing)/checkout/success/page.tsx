@@ -2,7 +2,7 @@ import { Suspense } from "react"
 import { CheckoutSuccess } from "@/components/checkout/checkout-success"
 
 export const metadata = {
-  title: "Order Confirmed | Jy Alweer?",
+  title: "Bestelling Bevestig",
   description: "Your order has been confirmed",
 }
 

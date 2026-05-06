@@ -2,7 +2,7 @@ import { createClient } from "@/lib/supabase/server"
 import { AccountDashboard } from "@/components/account/account-dashboard"
 
 export const metadata = {
-  title: "My Account | Jy Alweer?",
+  title: "My Account",
   description: "Manage your account and view order history",
 }
 

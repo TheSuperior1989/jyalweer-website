@@ -4,7 +4,7 @@ import { ShopGrid } from "@/components/shop/shop-grid"
 import type { Product } from "@/lib/types"
 
 export const metadata: Metadata = {
-  title: "Shop | Jy Alweer?",
+  title: "Shop",
   description: "Koop Jy Alweer? hemde, truie, pette en meer",
 }
 
@@ -18,7 +18,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
   let products: Product[] = []
 
   try {
-    let query = supabase.from("products").select("*").eq("in_stock", true)
+    let query = supabase.from("products").select("*").eq("is_active", true).gt("stock_quantity", 0)
 
     if (params.category && params.category !== "all") {
       query = query.eq("category", params.category)
@@ -29,13 +29,13 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
         query = query.order("created_at", { ascending: false })
         break
       case "priceAsc":
-        query = query.order("price", { ascending: true })
+        query = query.order("price_cents", { ascending: true })
         break
       case "priceDesc":
-        query = query.order("price", { ascending: false })
+        query = query.order("price_cents", { ascending: false })
         break
       default:
-        query = query.order("featured", { ascending: false }).order("created_at", { ascending: false })
+        query = query.order("is_featured", { ascending: false }).order("created_at", { ascending: false })
     }
 
     const { data: productsData, error } = await query

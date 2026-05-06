@@ -17,17 +17,17 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
     if (error || !product) {
       return {
-        title: "Product Not Found | Jy Alweer?",
+        title: "Produk Nie Gevind",
       }
     }
 
     return {
-      title: `${product.name} | Jy Alweer?`,
+      title: product.name,
       description: product.description || `Koop ${product.name} by Jy Alweer?`,
     }
   } catch (e) {
     return {
-      title: "Product Not Found | Jy Alweer?",
+      title: "Produk Nie Gevind",
     }
   }
 }

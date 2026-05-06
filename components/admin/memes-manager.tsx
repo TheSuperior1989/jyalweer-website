@@ -37,20 +37,18 @@ export function MemesManager({ initialMemes }: MemesManagerProps) {
   const { toast } = useToast()
 
   const [formData, setFormData] = useState({
-    title: "",
-    title_af: "",
-    description: "",
-    description_af: "",
+    caption: "",
+    caption_af: "",
+    facebook_link: "",
     image_url: "",
     is_meme_of_day: false,
   })
 
   const resetForm = () => {
     setFormData({
-      title: "",
-      title_af: "",
-      description: "",
-      description_af: "",
+      caption: "",
+      caption_af: "",
+      facebook_link: "",
       image_url: "",
       is_meme_of_day: false,
     })
@@ -60,10 +58,9 @@ export function MemesManager({ initialMemes }: MemesManagerProps) {
   const openEditDialog = (meme: Meme) => {
     setEditingMeme(meme)
     setFormData({
-      title: meme.title,
-      title_af: meme.title_af || "",
-      description: meme.description || "",
-      description_af: meme.description_af || "",
+      caption: meme.caption,
+      caption_af: meme.caption_af || "",
+      facebook_link: meme.facebook_link || "",
       image_url: meme.image_url,
       is_meme_of_day: meme.is_meme_of_day ?? false,
     })
@@ -77,10 +74,9 @@ export function MemesManager({ initialMemes }: MemesManagerProps) {
     const supabase = createClient()
 
     const memeData = {
-      title: formData.title,
-      title_af: formData.title_af || null,
-      description: formData.description || null,
-      description_af: formData.description_af || null,
+      caption: formData.caption,
+      caption_af: formData.caption_af || null,
+      facebook_link: formData.facebook_link || null,
       image_url: formData.image_url,
       is_meme_of_day: formData.is_meme_of_day,
     }
@@ -178,42 +174,32 @@ export function MemesManager({ initialMemes }: MemesManagerProps) {
               <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="title">Title (English)</Label>
+                    <Label htmlFor="caption">Caption (English)</Label>
                     <Input
-                      id="title"
-                      value={formData.title}
-                      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                      id="caption"
+                      value={formData.caption}
+                      onChange={(e) => setFormData({ ...formData, caption: e.target.value })}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="title_af">Title (Afrikaans)</Label>
+                    <Label htmlFor="caption_af">Caption (Afrikaans)</Label>
                     <Input
-                      id="title_af"
-                      value={formData.title_af}
-                      onChange={(e) => setFormData({ ...formData, title_af: e.target.value })}
+                      id="caption_af"
+                      value={formData.caption_af}
+                      onChange={(e) => setFormData({ ...formData, caption_af: e.target.value })}
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="description">Description (English)</Label>
-                    <Textarea
-                      id="description"
-                      value={formData.description}
-                      onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      rows={3}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="description_af">Description (Afrikaans)</Label>
-                    <Textarea
-                      id="description_af"
-                      value={formData.description_af}
-                      onChange={(e) => setFormData({ ...formData, description_af: e.target.value })}
-                      rows={3}
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="facebook_link">Facebook Post URL</Label>
+                  <Input
+                    id="facebook_link"
+                    type="url"
+                    value={formData.facebook_link}
+                    onChange={(e) => setFormData({ ...formData, facebook_link: e.target.value })}
+                    placeholder="https://www.facebook.com/..."
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="image_url">Image URL</Label>
@@ -261,11 +247,14 @@ export function MemesManager({ initialMemes }: MemesManagerProps) {
           {memes.map((meme) => (
             <Card key={meme.id} className="overflow-hidden">
               <div className="aspect-square relative bg-muted">
-                <ImageIconIcon
-                  src={meme.image_url || "/placeholder.svg"}
-                  alt={meme.title}
-                  className="object-cover"
-                />
+                {meme.image_url ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={meme.image_url} alt={meme.caption} className="object-cover w-full h-full" />
+                ) : (
+                  <div className="flex items-center justify-center h-full">
+                    <ImageIconIcon className="h-12 w-12 text-muted-foreground/50" />
+                  </div>
+                )}
                 {meme.is_meme_of_day && (
                   <div className="absolute top-2 right-2">
                     <Badge className="bg-yellow-500 text-yellow-950">
@@ -276,10 +265,7 @@ export function MemesManager({ initialMemes }: MemesManagerProps) {
                 )}
               </div>
               <CardContent className="p-4">
-                <h3 className="font-semibold">{meme.title}</h3>
-                {meme.description && (
-                  <p className="text-sm text-muted-foreground line-clamp-2 mt-1">{meme.description}</p>
-                )}
+                <h3 className="font-semibold">{meme.caption}</h3>
                 <div className="flex gap-2 mt-4">
                   <Button variant="outline" size="sm" onClick={() => openEditDialog(meme)}>
                     <Pencil className="h-4 w-4 mr-1" />

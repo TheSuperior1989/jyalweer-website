@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import { AdminSidebar } from "@/components/admin/admin-sidebar"
 
 export const metadata = {
-  title: "Admin Dashboard | Jy Alweer?",
+  title: "Admin Dashboard",
   description: "Admin dashboard for managing Jy Alweer? store",
 }
 

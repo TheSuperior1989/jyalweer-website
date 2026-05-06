@@ -6,7 +6,7 @@ import type { Meme } from "@/lib/types"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export const metadata: Metadata = {
-  title: "Memes Gallery | Jy Alweer?",
+  title: "Memes Gallery",
   description: "Blaai deur ons versameling van die snaakste Suid-Afrikaanse memes",
 }
 

@@ -45,8 +45,8 @@ export function ProductsManager({ initialProducts }: ProductsManagerProps) {
     image_url: "",
     category: "",
     sizes: "",
-    in_stock: true,
-    featured: false,
+    is_active: true,
+    is_featured: false,
   })
 
   const resetForm = () => {
@@ -59,8 +59,8 @@ export function ProductsManager({ initialProducts }: ProductsManagerProps) {
       image_url: "",
       category: "",
       sizes: "",
-      in_stock: true,
-      featured: false,
+      is_active: true,
+      is_featured: false,
     })
     setEditingProduct(null)
   }
@@ -72,12 +72,12 @@ export function ProductsManager({ initialProducts }: ProductsManagerProps) {
       name_af: product.name_af || "",
       description: product.description || "",
       description_af: product.description_af || "",
-      price: (product.price / 100).toString(),
+      price: (product.price_cents / 100).toString(),
       image_url: product.image_url || "",
       category: product.category || "",
       sizes: product.sizes?.join(", ") || "",
-      in_stock: product.in_stock ?? true,
-      featured: product.featured ?? false,
+      is_active: product.is_active ?? true,
+      is_featured: product.is_featured ?? false,
     })
     setIsDialogOpen(true)
   }
@@ -95,12 +95,13 @@ export function ProductsManager({ initialProducts }: ProductsManagerProps) {
       name_af: formData.name_af || null,
       description: formData.description || null,
       description_af: formData.description_af || null,
-      price: priceInCents,
+      price_cents: priceInCents,
       image_url: formData.image_url || null,
       category: formData.category || null,
       sizes: sizesArray,
-      in_stock: formData.in_stock,
-      featured: formData.featured,
+      is_active: formData.is_active,
+      stock_quantity: formData.is_active ? 100 : 0,
+      is_featured: formData.is_featured,
     }
 
     try {
@@ -273,19 +274,19 @@ export function ProductsManager({ initialProducts }: ProductsManagerProps) {
                 <div className="flex items-center gap-6">
                   <div className="flex items-center space-x-2">
                     <Switch
-                      id="in_stock"
-                      checked={formData.in_stock}
-                      onCheckedChange={(checked) => setFormData({ ...formData, in_stock: checked })}
+                      id="is_active"
+                      checked={formData.is_active}
+                      onCheckedChange={(checked) => setFormData({ ...formData, is_active: checked })}
                     />
-                    <Label htmlFor="in_stock">In Stock</Label>
+                    <Label htmlFor="is_active">Active / In Stock</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Switch
-                      id="featured"
-                      checked={formData.featured}
-                      onCheckedChange={(checked) => setFormData({ ...formData, featured: checked })}
+                      id="is_featured"
+                      checked={formData.is_featured}
+                      onCheckedChange={(checked) => setFormData({ ...formData, is_featured: checked })}
                     />
-                    <Label htmlFor="featured">Featured</Label>
+                    <Label htmlFor="is_featured">Featured</Label>
                   </div>
                 </div>
               </div>
@@ -331,11 +332,11 @@ export function ProductsManager({ initialProducts }: ProductsManagerProps) {
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <h3 className="font-semibold">{product.name}</h3>
-                    <p className="text-lg font-bold text-primary">{formatPrice(product.price)}</p>
+                    <p className="text-lg font-bold text-primary">{formatPrice(product.price_cents)}</p>
                   </div>
                   <div className="flex gap-1">
-                    {product.featured && <Badge>Featured</Badge>}
-                    {!product.in_stock && <Badge variant="secondary">Out of Stock</Badge>}
+                    {product.is_featured && <Badge>Featured</Badge>}
+                    {!product.is_active && <Badge variant="secondary">Inactive</Badge>}
                   </div>
                 </div>
                 {product.category && (

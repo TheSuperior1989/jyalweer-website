@@ -1,6 +1,6 @@
 import React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter, Playfair_Display, Geist_Mono } from "next/font/google"
+import { Inter, Space_Grotesk, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Toaster } from "@/components/ui/toaster"
@@ -8,7 +8,11 @@ import { LanguageProvider } from "@/lib/language-context"
 import { CartProvider } from "@/lib/cart-context"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" })
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
+})
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
 export const metadata: Metadata = {
@@ -28,6 +32,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Jy Alweer?" }],
   creator: "Jy Alweer?",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://jyalweer.co.za"),
   openGraph: {
     type: "website",
     locale: "af_ZA",
@@ -47,16 +52,34 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-    generator: 'v0.app'
 }
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#7a6a4f" },
-    { media: "(prefers-color-scheme: dark)", color: "#2d2820" },
+    { media: "(prefers-color-scheme: light)", color: "#faf6ec" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
   ],
   width: "device-width",
   initialScale: 1,
+}
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Jy Alweer?",
+  url: "https://jyalweer.co.za",
+  logo: "https://jyalweer.co.za/images/JyAlweerGrapBlad.svg",
+  sameAs: [
+    "https://www.facebook.com/JyAlweer",
+    "https://instagram.com/jyalweer",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "info@jyalweer.co.za",
+    contactType: "customer service",
+    areaServed: "ZA",
+    availableLanguage: ["Afrikaans", "English"],
+  },
 }
 
 export default function RootLayout({
@@ -66,7 +89,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="af" suppressHydrationWarning>
-      <body className={`${inter.variable} ${playfair.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable} font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
         <LanguageProvider>
           <CartProvider>
             {children}
