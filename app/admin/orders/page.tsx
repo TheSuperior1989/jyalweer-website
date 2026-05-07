@@ -7,7 +7,7 @@ export default async function AdminOrdersPage() {
     .from("orders")
     .select(`
       *,
-      profiles (first_name, last_name)
+      profiles (full_name)
     `)
     .order("created_at", { ascending: false })
 

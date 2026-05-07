@@ -19,12 +19,19 @@ interface Order {
   user_id: string | null
   stripe_session_id: string | null
   status: string
-  total_amount: number
-  shipping_address: any
+  total_cents: number
+  email: string | null
+  shipping_address: {
+    full_name?: string
+    street_address?: string
+    city?: string
+    province?: string
+    postal_code?: string
+    phone?: string
+  } | null
   created_at: string
   profiles?: {
-    first_name: string | null
-    last_name: string | null
+    full_name: string | null
   } | null
 }
 
@@ -120,7 +127,7 @@ export function OrdersManager({ initialOrders }: OrdersManagerProps) {
                   </div>
                   <div className="flex items-center gap-4">
                     {getStatusBadge(order.status)}
-                    <span className="text-xl font-bold">{formatPrice(order.total_amount || 0)}</span>
+                    <span className="text-xl font-bold">{formatPrice(order.total_cents || 0)}</span>
                   </div>
                 </div>
               </CardHeader>
@@ -128,24 +135,18 @@ export function OrdersManager({ initialOrders }: OrdersManagerProps) {
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <h4 className="text-sm font-medium text-muted-foreground mb-2">Customer</h4>
-                    {order.profiles ? (
-                      <p className="font-medium">
-                        {order.profiles.first_name} {order.profiles.last_name}
-                      </p>
-                    ) : order.shipping_address?.name ? (
-                      <p className="font-medium">{order.shipping_address.name}</p>
-                    ) : (
-                      <p className="text-muted-foreground">Guest checkout</p>
-                    )}
-                    {order.shipping_address?.email && (
-                      <p className="text-sm text-muted-foreground">{order.shipping_address.email}</p>
+                    <p className="font-medium">
+                      {order.profiles?.full_name || order.shipping_address?.full_name || "Guest"}
+                    </p>
+                    {order.email && (
+                      <p className="text-sm text-muted-foreground">{order.email}</p>
                     )}
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-muted-foreground mb-2">Shipping Address</h4>
                     {order.shipping_address ? (
                       <div className="text-sm">
-                        <p>{order.shipping_address.address}</p>
+                        <p>{order.shipping_address.street_address}</p>
                         <p>
                           {order.shipping_address.city}, {order.shipping_address.province}
                         </p>

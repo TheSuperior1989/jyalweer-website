@@ -5,6 +5,7 @@ import React from "react"
 import { useState } from "react"
 import Image from "next/image"
 import { Plus, Pencil, Trash2, Package } from "lucide-react"
+import { ImageUpload } from "./image-upload"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -253,13 +254,12 @@ export function ProductsManager({ initialProducts }: ProductsManagerProps) {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="image_url">Image URL</Label>
-                  <Input
-                    id="image_url"
-                    type="url"
+                  <Label>Product Image</Label>
+                  <ImageUpload
                     value={formData.image_url}
-                    onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                    placeholder="https://..."
+                    onChange={(url) => setFormData({ ...formData, image_url: url })}
+                    bucket="images"
+                    folder="products"
                   />
                 </div>
                 <div className="space-y-2">

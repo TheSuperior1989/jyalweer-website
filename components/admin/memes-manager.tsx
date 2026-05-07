@@ -4,6 +4,7 @@ import React from "react"
 
 import { useState } from "react"
 import { Plus, Pencil, Trash2, ImageIcon as ImageIconIcon, Star } from "lucide-react"
+import { ImageUpload } from "./image-upload"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -18,7 +19,6 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
 import { Switch } from "@/components/ui/switch"
 import { useToast } from "@/hooks/use-toast"
 import { createClient } from "@/lib/supabase/client"
@@ -202,14 +202,12 @@ export function MemesManager({ initialMemes }: MemesManagerProps) {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="image_url">Image URL</Label>
-                  <Input
-                    id="image_url"
-                    type="url"
+                  <Label>Meme Image</Label>
+                  <ImageUpload
                     value={formData.image_url}
-                    onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                    placeholder="https://..."
-                    required
+                    onChange={(url) => setFormData({ ...formData, image_url: url })}
+                    bucket="images"
+                    folder="memes"
                   />
                 </div>
                 <div className="flex items-center space-x-2">
