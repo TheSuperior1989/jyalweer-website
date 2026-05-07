@@ -6,9 +6,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
+import { useLanguage } from "@/lib/language-context"
 
 export function ContactForm() {
   const { toast } = useToast()
+  const { language } = useLanguage()
+  const af = language === "af"
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
@@ -22,26 +25,22 @@ export function ContactForm() {
     setIsSubmitting(true)
 
     try {
-      // TODO: Implement actual email sending (e.g., via Resend API)
-      // For now, just simulate success
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
       toast({
-        title: "Boodskap gestuur!",
-        description: "Dankie vir jou boodskap. Ons sal binnekort antwoord.",
+        title: af ? "Boodskap gestuur!" : "Message sent!",
+        description: af
+          ? "Dankie vir jou boodskap. Ons sal binnekort antwoord."
+          : "Thank you for your message. We'll get back to you shortly.",
       })
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      })
-    } catch (error) {
+      setFormData({ name: "", email: "", subject: "", message: "" })
+    } catch {
       toast({
-        title: "Fout",
-        description: "Kon nie boodskap stuur nie. Probeer asseblief weer.",
+        title: af ? "Fout" : "Error",
+        description: af
+          ? "Kon nie boodskap stuur nie. Probeer asseblief weer."
+          : "Could not send message. Please try again.",
         variant: "destructive",
       })
     } finally {
@@ -49,26 +48,21 @@ export function ContactForm() {
     }
   }
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }))
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="name">Naam *</Label>
+        <Label htmlFor="name">{af ? "Naam *" : "Name *"}</Label>
         <Input
           id="name"
           name="name"
           value={formData.name}
           onChange={handleChange}
           required
-          placeholder="Jou naam"
+          placeholder={af ? "Jou naam" : "Your name"}
         />
       </div>
 
@@ -86,34 +80,35 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="subject">Onderwerp *</Label>
+        <Label htmlFor="subject">{af ? "Onderwerp *" : "Subject *"}</Label>
         <Input
           id="subject"
           name="subject"
           value={formData.subject}
           onChange={handleChange}
           required
-          placeholder="Waaroor gaan jou boodskap?"
+          placeholder={af ? "Waaroor gaan jou boodskap?" : "What is your message about?"}
         />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="message">Boodskap *</Label>
+        <Label htmlFor="message">{af ? "Boodskap *" : "Message *"}</Label>
         <Textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
           required
-          placeholder="Skryf jou boodskap hier..."
+          placeholder={af ? "Skryf jou boodskap hier..." : "Write your message here..."}
           rows={6}
         />
       </div>
 
       <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Stuur..." : "Stuur Boodskap"}
+        {isSubmitting
+          ? (af ? "Stuur..." : "Sending...")
+          : (af ? "Stuur Boodskap" : "Send Message")}
       </Button>
     </form>
   )
 }
-

@@ -13,7 +13,8 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ memeOfDay, featuredProduct }: HeroSectionProps) {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+  const af = language === "af"
 
   return (
     <section className="relative overflow-hidden bg-background">
@@ -101,18 +102,18 @@ export function HeroSection({ memeOfDay, featuredProduct }: HeroSectionProps) {
             <div className="animate-fade-up delay-400 flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-1.5">
                 <span className="text-base">😂</span>
-                <span className="font-medium text-foreground">50k+ volgelinge</span>
-                <span>op Facebook</span>
+                <span className="font-medium text-foreground">50k+</span>
+                <span>{af ? "volgelinge op Facebook" : "followers on Facebook"}</span>
               </div>
               <div className="h-4 w-px bg-border" />
               <div className="flex items-center gap-1.5">
                 <span className="text-base">🇿🇦</span>
-                <span>100% Suid-Afrikaans</span>
+                <span>{af ? "100% Suid-Afrikaans" : "100% South African"}</span>
               </div>
               <div className="h-4 w-px bg-border" />
               <div className="flex items-center gap-1.5">
                 <span className="text-base">🚚</span>
-                <span>Gratis versending oor R1000</span>
+                <span>{af ? "Gratis versending oor R1000" : "Free shipping over R1000"}</span>
               </div>
             </div>
           </div>
@@ -174,13 +175,13 @@ export function HeroSection({ memeOfDay, featuredProduct }: HeroSectionProps) {
                     </div>
                     <div className="px-3 py-1.5">
                       <p className="text-xs font-semibold text-foreground">Jy Alweer?</p>
-                      <p className="text-xs text-muted-foreground">😂 Meme of the day</p>
+                      <p className="text-xs text-muted-foreground">😂 {af ? "Meme van die dag" : "Meme of the day"}</p>
                     </div>
                   </>
                 ) : (
                   <div className="px-3 py-2">
                     <p className="text-xs font-semibold text-foreground">Jy Alweer?</p>
-                    <p className="text-xs text-muted-foreground">😂 Meme of the day</p>
+                    <p className="text-xs text-muted-foreground">😂 {af ? "Meme van die dag" : "Meme of the day"}</p>
                   </div>
                 )}
               </Link>
@@ -202,10 +203,12 @@ export function HeroSection({ memeOfDay, featuredProduct }: HeroSectionProps) {
                   )}
                   <div className="px-3 py-1.5">
                     <p className="text-xs font-bold" style={{ color: "var(--terra)" }}>
-                      {featuredProduct.is_limited_drop ? "🔥 Limited Drop" : "⭐ Featured"}
+                      {featuredProduct.is_limited_drop
+                        ? (af ? "🔥 Beperkte Uitgawe" : "🔥 Limited Drop")
+                        : (af ? "⭐ Uitgelig" : "⭐ Featured")}
                     </p>
                     <p className="text-xs font-medium text-foreground line-clamp-1">{featuredProduct.name}</p>
-                    <p className="text-xs text-muted-foreground">Bestel nou</p>
+                    <p className="text-xs text-muted-foreground">{af ? "Bestel nou" : "Order now"}</p>
                   </div>
                 </Link>
               )}
