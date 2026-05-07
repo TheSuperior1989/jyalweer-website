@@ -132,49 +132,57 @@ export function HeroSection({ memeOfDay }: HeroSectionProps) {
                 style={{ background: "var(--lime)", opacity: 0.08 }}
               />
 
-              {/* Central card — meme of day if set, otherwise logo */}
+              {/* Central logo mark */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <Link href="/memes" className="block">
-                  <div
-                    className="relative flex h-52 w-52 md:h-64 md:w-64 items-center justify-center rounded-3xl border-2 border-border bg-card shadow-2xl animate-float overflow-hidden"
+                <div
+                  className="relative flex h-52 w-52 md:h-64 md:w-64 items-center justify-center rounded-3xl border-2 border-border bg-card shadow-2xl animate-float"
+                >
+                  <Image
+                    src="/images/JyAlweerGrapBlad.svg"
+                    alt="Jy Alweer? Logo"
+                    width={160}
+                    height={160}
+                    className="h-36 w-36 md:h-44 md:w-44 object-contain"
+                    priority
+                  />
+                  {/* Corner badge */}
+                  <span
+                    className="absolute -right-3 -top-3 flex h-10 w-10 items-center justify-center rounded-full border-2 border-card text-sm font-black shadow-md"
+                    style={{ background: "var(--lime)" }}
+                    aria-hidden
                   >
-                    {memeOfDay?.image_url ? (
-                      <Image
-                        src={memeOfDay.image_url}
-                        alt={memeOfDay.caption || "Meme of the day"}
-                        fill
-                        className="object-cover"
-                        priority
-                      />
-                    ) : (
-                      <Image
-                        src="/images/JyAlweerGrapBlad.svg"
-                        alt="Jy Alweer? Logo"
-                        width={160}
-                        height={160}
-                        className="h-36 w-36 md:h-44 md:w-44 object-contain"
-                        priority
-                      />
-                    )}
-                    {/* Corner badge */}
-                    <span
-                      className="absolute -right-3 -top-3 flex h-10 w-10 items-center justify-center rounded-full border-2 border-card text-sm font-black shadow-md z-10"
-                      style={{ background: "var(--lime)" }}
-                      aria-hidden
-                    >
-                      ?
-                    </span>
-                  </div>
-                </Link>
+                    ?
+                  </span>
+                </div>
               </div>
 
-              {/* Floating tags */}
-              <div
-                className="absolute -left-4 top-12 animate-fade-in delay-500 rounded-xl border border-border bg-card px-3 py-2 shadow-lg"
+              {/* Floating meme-of-day tag */}
+              <Link
+                href="/memes"
+                className="absolute -left-4 top-12 animate-fade-in delay-500 rounded-xl border border-border bg-card shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-40"
               >
-                <p className="text-xs font-semibold text-foreground">Jy Alweer?</p>
-                <p className="text-xs text-muted-foreground">😂 Meme of the day</p>
-              </div>
+                {memeOfDay?.image_url ? (
+                  <>
+                    <div className="relative h-24 w-full">
+                      <Image
+                        src={memeOfDay.image_url}
+                        alt="Meme of the day"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="px-3 py-1.5">
+                      <p className="text-xs font-semibold text-foreground">Jy Alweer?</p>
+                      <p className="text-xs text-muted-foreground">😂 Meme of the day</p>
+                    </div>
+                  </>
+                ) : (
+                  <div className="px-3 py-2">
+                    <p className="text-xs font-semibold text-foreground">Jy Alweer?</p>
+                    <p className="text-xs text-muted-foreground">😂 Meme of the day</p>
+                  </div>
+                )}
+              </Link>
               <div
                 className="absolute -right-4 bottom-16 animate-fade-in delay-400 rounded-xl border border-border bg-card px-3 py-2 shadow-lg"
               >
