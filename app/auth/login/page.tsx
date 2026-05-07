@@ -45,7 +45,7 @@ export default function LoginPage() {
 
     try {
       const supabase = createClient()
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
@@ -59,7 +59,14 @@ export default function LoginPage() {
         return
       }
 
-      router.push("/account")
+      // Redirect admins to dashboard, everyone else to account
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("is_admin")
+        .eq("id", data.user.id)
+        .single()
+
+      router.push(profile?.is_admin ? "/admin" : "/account")
       router.refresh()
     } catch (error) {
       toast({

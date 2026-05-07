@@ -20,10 +20,14 @@ export default async function AdminLayout({
     redirect("/auth/login")
   }
 
-  // Check if user is admin
-  const isAdmin = user.user_metadata?.is_admin === true
+  // Check is_admin from profiles table (not user_metadata)
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("is_admin")
+    .eq("id", user.id)
+    .single()
 
-  if (!isAdmin) {
+  if (!profile?.is_admin) {
     redirect("/")
   }
 
