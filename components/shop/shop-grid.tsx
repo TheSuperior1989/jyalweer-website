@@ -14,21 +14,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import type { Product } from "@/lib/types"
+import type { Category, Product } from "@/lib/types"
 
 interface ShopGridProps {
   products: Product[]
+  categories: Category[]
   initialCategory?: string
   initialSort?: string
 }
-
-const categories = [
-  { value: "all", labelAf: "Alle Produkte", labelEn: "All Products" },
-  { value: "tshirts", labelAf: "Hemde", labelEn: "T-Shirts" },
-  { value: "hoodies", labelAf: "Truie", labelEn: "Hoodies" },
-  { value: "caps", labelAf: "Pette", labelEn: "Caps" },
-  { value: "stickers", labelAf: "Plakkers", labelEn: "Stickers" },
-]
 
 const sortOptions = [
   { value: "featured", labelAf: "Uitgelig", labelEn: "Featured" },
@@ -37,7 +30,12 @@ const sortOptions = [
   { value: "priceDesc", labelAf: "Prys: Hoog na Laag", labelEn: "Price: High to Low" },
 ]
 
-export function ShopGrid({ products, initialCategory = "all", initialSort = "featured" }: ShopGridProps) {
+export function ShopGrid({ products, categories, initialCategory = "all", initialSort = "featured" }: ShopGridProps) {
+  const allTab = { value: "all", labelAf: "Alle Produkte", labelEn: "All Products" }
+  const categoryTabs = [
+    allTab,
+    ...categories.map((c) => ({ value: c.slug, labelAf: c.name_af, labelEn: c.name })),
+  ]
   const { language, t } = useLanguage()
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -69,7 +67,7 @@ export function ShopGrid({ products, initialCategory = "all", initialSort = "fea
 
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap gap-2">
-          {categories.map((cat) => (
+          {categoryTabs.map((cat) => (
             <Button
               key={cat.value}
               variant={initialCategory === cat.value || (initialCategory === undefined && cat.value === "all") ? "default" : "outline"}

@@ -22,16 +22,25 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Switch } from "@/components/ui/switch"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { useToast } from "@/hooks/use-toast"
 import { createClient } from "@/lib/supabase/client"
-import type { Product } from "@/lib/types"
+import type { Category, Product } from "@/lib/types"
 
 interface ProductsManagerProps {
   initialProducts: Product[]
+  initialCategories: Category[]
 }
 
-export function ProductsManager({ initialProducts }: ProductsManagerProps) {
+export function ProductsManager({ initialProducts, initialCategories }: ProductsManagerProps) {
   const [products, setProducts] = useState<Product[]>(initialProducts)
+  const categories = initialCategories
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -245,12 +254,24 @@ export function ProductsManager({ initialProducts }: ProductsManagerProps) {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="category">Category</Label>
-                    <Input
-                      id="category"
-                      value={formData.category}
-                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                      placeholder="e.g., T-Shirts, Hoodies"
-                    />
+                    <Select
+                      value={formData.category || ""}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, category: value === "__none__" ? "" : value })
+                      }
+                    >
+                      <SelectTrigger id="category">
+                        <SelectValue placeholder="Select a category" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="__none__">— No category —</SelectItem>
+                        {categories.map((cat) => (
+                          <SelectItem key={cat.id} value={cat.slug}>
+                            {cat.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
                 <div className="space-y-2">

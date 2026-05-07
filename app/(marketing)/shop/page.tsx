@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { createClient } from "@/lib/supabase/server"
 import { ShopGrid } from "@/components/shop/shop-grid"
-import type { Product } from "@/lib/types"
+import type { Category, Product } from "@/lib/types"
 
 export const metadata: Metadata = {
   title: "Shop",
@@ -16,6 +16,17 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
   const params = await searchParams
   const supabase = await createClient()
   let products: Product[] = []
+  let categories: Category[] = []
+
+  try {
+    const { data: catData } = await supabase
+      .from("categories")
+      .select("*")
+      .order("sort_order", { ascending: true })
+    categories = catData || []
+  } catch {
+    // categories table may not exist yet
+  }
 
   try {
     let query = supabase.from("products").select("*").eq("is_active", true).gt("stock_quantity", 0)
@@ -49,7 +60,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12">
-      <ShopGrid products={products} initialCategory={params.category} initialSort={params.sort} />
+      <ShopGrid products={products} categories={categories} initialCategory={params.category} initialSort={params.sort} />
     </div>
   )
 }

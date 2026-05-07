@@ -1,3 +1,12 @@
+export interface Category {
+  id: string
+  slug: string
+  name: string
+  name_af: string
+  sort_order: number
+  created_at: string
+}
+
 export interface Product {
   id: string
   name: string
@@ -5,7 +14,7 @@ export interface Product {
   description: string | null
   description_af: string | null
   price_cents: number
-  category: "tshirts" | "hoodies" | "caps" | "stickers"
+  category: string | null
   image_url: string | null
   sizes: string[]
   colors: string[]
