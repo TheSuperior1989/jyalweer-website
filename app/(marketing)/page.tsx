@@ -33,8 +33,8 @@ export default async function HomePage() {
     const { data: productsData, error: productsError } = await supabase
       .from("products")
       .select("*")
-      .eq("featured", true)
-      .eq("in_stock", true)
+      .eq("is_featured", true)
+      .eq("is_active", true)
       .limit(4)
       .order("created_at", { ascending: false })
 
@@ -47,7 +47,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <HeroSection />
+      <HeroSection memeOfDay={meme} />
       <MemeOfDay meme={meme} />
       <FeaturedProducts products={products} />
 

@@ -29,6 +29,7 @@ export function FacebookFeed({
         style={{ border: 'none', overflow: 'hidden', display: 'block' }}
         scrolling="no"
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
         className="rounded-lg shadow-md w-full max-w-[500px]"
       />
     </div>

@@ -5,8 +5,13 @@ import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ShoppingBag, Zap } from "lucide-react"
+import type { Meme } from "@/lib/types"
 
-export function HeroSection() {
+interface HeroSectionProps {
+  memeOfDay?: Meme | null
+}
+
+export function HeroSection({ memeOfDay }: HeroSectionProps) {
   const { t } = useLanguage()
 
   return (
@@ -127,28 +132,40 @@ export function HeroSection() {
                 style={{ background: "var(--lime)", opacity: 0.08 }}
               />
 
-              {/* Central logo mark */}
+              {/* Central card — meme of day if set, otherwise logo */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div
-                  className="relative flex h-52 w-52 md:h-64 md:w-64 items-center justify-center rounded-3xl border-2 border-border bg-card shadow-2xl animate-float"
-                >
-                  <Image
-                    src="/images/JyAlweerGrapBlad.svg"
-                    alt="Jy Alweer? Logo"
-                    width={160}
-                    height={160}
-                    className="h-36 w-36 md:h-44 md:w-44 object-contain"
-                    priority
-                  />
-                  {/* Corner badge */}
-                  <span
-                    className="absolute -right-3 -top-3 flex h-10 w-10 items-center justify-center rounded-full border-2 border-card text-sm font-black shadow-md"
-                    style={{ background: "var(--lime)" }}
-                    aria-hidden
+                <Link href="/memes" className="block">
+                  <div
+                    className="relative flex h-52 w-52 md:h-64 md:w-64 items-center justify-center rounded-3xl border-2 border-border bg-card shadow-2xl animate-float overflow-hidden"
                   >
-                    ?
-                  </span>
-                </div>
+                    {memeOfDay?.image_url ? (
+                      <Image
+                        src={memeOfDay.image_url}
+                        alt={memeOfDay.caption || "Meme of the day"}
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                    ) : (
+                      <Image
+                        src="/images/JyAlweerGrapBlad.svg"
+                        alt="Jy Alweer? Logo"
+                        width={160}
+                        height={160}
+                        className="h-36 w-36 md:h-44 md:w-44 object-contain"
+                        priority
+                      />
+                    )}
+                    {/* Corner badge */}
+                    <span
+                      className="absolute -right-3 -top-3 flex h-10 w-10 items-center justify-center rounded-full border-2 border-card text-sm font-black shadow-md z-10"
+                      style={{ background: "var(--lime)" }}
+                      aria-hidden
+                    >
+                      ?
+                    </span>
+                  </div>
+                </Link>
               </div>
 
               {/* Floating tags */}
