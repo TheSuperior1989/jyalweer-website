@@ -5,13 +5,14 @@ import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ShoppingBag, Zap } from "lucide-react"
-import type { Meme } from "@/lib/types"
+import type { Meme, Product } from "@/lib/types"
 
 interface HeroSectionProps {
   memeOfDay?: Meme | null
+  featuredProduct?: Product | null
 }
 
-export function HeroSection({ memeOfDay }: HeroSectionProps) {
+export function HeroSection({ memeOfDay, featuredProduct }: HeroSectionProps) {
   const { t } = useLanguage()
 
   return (
@@ -183,12 +184,31 @@ export function HeroSection({ memeOfDay }: HeroSectionProps) {
                   </div>
                 )}
               </Link>
-              <div
-                className="absolute -right-4 bottom-16 animate-fade-in delay-400 rounded-xl border border-border bg-card px-3 py-2 shadow-lg"
-              >
-                <p className="text-xs font-bold" style={{ color: "var(--terra)" }}>🔥 Limited Drop</p>
-                <p className="text-xs text-muted-foreground">Bestel nou</p>
-              </div>
+              {/* Floating featured product card */}
+              {featuredProduct && (
+                <Link
+                  href={`/shop/${featuredProduct.id}`}
+                  className="absolute -right-4 bottom-16 animate-fade-in delay-400 rounded-xl border border-border bg-card shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-40"
+                >
+                  {featuredProduct.image_url && (
+                    <div className="relative h-20 w-full">
+                      <Image
+                        src={featuredProduct.image_url}
+                        alt={featuredProduct.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="px-3 py-1.5">
+                    <p className="text-xs font-bold" style={{ color: "var(--terra)" }}>
+                      {featuredProduct.is_limited_drop ? "🔥 Limited Drop" : "⭐ Featured"}
+                    </p>
+                    <p className="text-xs font-medium text-foreground line-clamp-1">{featuredProduct.name}</p>
+                    <p className="text-xs text-muted-foreground">Bestel nou</p>
+                  </div>
+                </Link>
+              )}
             </div>
 
             {/* Hero image if available — otherwise the decorated logo */}

@@ -11,6 +11,7 @@ export default async function HomePage() {
 
   let meme: Meme | null = null
   let products: Product[] = []
+  let heroProduct: Product | null = null
 
   try {
     // Fetch meme of the day
@@ -45,9 +46,37 @@ export default async function HomePage() {
     // Table might not exist yet
   }
 
+  try {
+    // Hero product: prefer limited drop, fall back to any featured
+    const { data: limitedData } = await supabase
+      .from("products")
+      .select("*")
+      .eq("is_limited_drop", true)
+      .eq("is_active", true)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .single()
+
+    if (limitedData) {
+      heroProduct = limitedData as Product
+    } else {
+      const { data: featuredData } = await supabase
+        .from("products")
+        .select("*")
+        .eq("is_featured", true)
+        .eq("is_active", true)
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .single()
+      if (featuredData) heroProduct = featuredData as Product
+    }
+  } catch (e) {
+    // no product available
+  }
+
   return (
     <>
-      <HeroSection memeOfDay={meme} />
+      <HeroSection memeOfDay={meme} featuredProduct={heroProduct} />
       <MemeOfDay meme={meme} />
       <FeaturedProducts products={products} />
 

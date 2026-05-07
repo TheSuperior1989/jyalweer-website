@@ -57,6 +57,7 @@ export function ProductsManager({ initialProducts, initialCategories }: Products
     sizes: "",
     is_active: true,
     is_featured: false,
+    is_limited_drop: false,
   })
 
   const resetForm = () => {
@@ -71,6 +72,7 @@ export function ProductsManager({ initialProducts, initialCategories }: Products
       sizes: "",
       is_active: true,
       is_featured: false,
+      is_limited_drop: false,
     })
     setEditingProduct(null)
   }
@@ -88,6 +90,7 @@ export function ProductsManager({ initialProducts, initialCategories }: Products
       sizes: product.sizes?.join(", ") || "",
       is_active: product.is_active ?? true,
       is_featured: product.is_featured ?? false,
+      is_limited_drop: product.is_limited_drop ?? false,
     })
     setIsDialogOpen(true)
   }
@@ -112,6 +115,7 @@ export function ProductsManager({ initialProducts, initialCategories }: Products
       is_active: formData.is_active,
       stock_quantity: formData.is_active ? 100 : 0,
       is_featured: formData.is_featured,
+      is_limited_drop: formData.is_limited_drop,
     }
 
     try {
@@ -292,7 +296,7 @@ export function ProductsManager({ initialProducts, initialCategories }: Products
                     placeholder="S, M, L, XL"
                   />
                 </div>
-                <div className="flex items-center gap-6">
+                <div className="flex flex-wrap items-center gap-6">
                   <div className="flex items-center space-x-2">
                     <Switch
                       id="is_active"
@@ -308,6 +312,14 @@ export function ProductsManager({ initialProducts, initialCategories }: Products
                       onCheckedChange={(checked) => setFormData({ ...formData, is_featured: checked })}
                     />
                     <Label htmlFor="is_featured">Featured</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Switch
+                      id="is_limited_drop"
+                      checked={formData.is_limited_drop}
+                      onCheckedChange={(checked) => setFormData({ ...formData, is_limited_drop: checked })}
+                    />
+                    <Label htmlFor="is_limited_drop">Limited Drop</Label>
                   </div>
                 </div>
               </div>
