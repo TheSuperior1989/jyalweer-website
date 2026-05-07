@@ -3,7 +3,7 @@ import { HeroSection } from "@/components/home/hero-section"
 import { MemeOfDay } from "@/components/home/meme-of-day"
 import { FeaturedProducts } from "@/components/home/featured-products"
 import { NewsletterSection } from "@/components/home/newsletter-section"
-import { FacebookPagePlugin } from "@/components/memes/facebook-feed"
+import { FacebookFeed } from "@/components/memes/facebook-feed"
 import type { Meme, Product } from "@/lib/types"
 
 export default async function HomePage() {
@@ -61,7 +61,7 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="flex justify-center">
-            <FacebookPagePlugin width={500} height={600} />
+            <FacebookFeed height={600} />
           </div>
         </div>
       </section>

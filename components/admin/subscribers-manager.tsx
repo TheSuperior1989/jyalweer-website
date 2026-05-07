@@ -18,7 +18,7 @@ import { createClient } from "@/lib/supabase/client"
 interface Subscriber {
   id: string
   email: string
-  subscribed_at: string
+  created_at: string
   is_active: boolean
 }
 
@@ -53,7 +53,7 @@ export function SubscribersManager({ initialSubscribers }: SubscribersManagerPro
     const headers = ["Email", "Subscribed Date", "Status"]
     const rows = subscribers.map((s) => [
       s.email,
-      new Date(s.subscribed_at).toLocaleDateString(),
+      new Date(s.created_at).toLocaleDateString(),
       s.is_active ? "Active" : "Inactive",
     ])
 
@@ -123,7 +123,7 @@ export function SubscribersManager({ initialSubscribers }: SubscribersManagerPro
                 {subscribers.map((subscriber) => (
                   <TableRow key={subscriber.id}>
                     <TableCell className="font-medium">{subscriber.email}</TableCell>
-                    <TableCell>{formatDate(subscriber.subscribed_at)}</TableCell>
+                    <TableCell>{formatDate(subscriber.created_at)}</TableCell>
                     <TableCell>
                       <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
                         subscriber.is_active 
