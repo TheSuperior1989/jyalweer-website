@@ -1,0 +1,122 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "Jy Alweer? Jy Alweer?" [ref=e6] [cursor=pointer]:
+            - /url: /
+            - img "Jy Alweer?" [ref=e7]
+            - generic [ref=e8]: Jy Alweer?
+          - navigation [ref=e9]:
+            - link "Memes" [ref=e10] [cursor=pointer]:
+              - /url: /memes
+            - link "Winkel" [ref=e11] [cursor=pointer]:
+              - /url: /shop
+            - link "Oor Ons" [ref=e12] [cursor=pointer]:
+              - /url: /oor-ons
+        - generic [ref=e13]:
+          - button "Change language" [ref=e14]:
+            - img
+          - link "Mandjie" [ref=e15] [cursor=pointer]:
+            - /url: /cart
+            - button [ref=e16]:
+              - img
+          - generic [ref=e17]:
+            - link "Teken In" [ref=e18] [cursor=pointer]:
+              - /url: /auth/login
+              - button "Teken In" [ref=e19]
+            - link "Winkel" [ref=e20] [cursor=pointer]:
+              - /url: /shop
+              - button "Winkel" [ref=e21]
+    - main [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - heading "Winkel" [level=1] [ref=e25]
+          - paragraph [ref=e26]: Ontdek ons versameling van Jy Alweer? produkte
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - button "Alle Produkte" [ref=e29]
+            - button "Hemde" [ref=e30]
+            - button "Truie" [ref=e31]
+            - button "Pette" [ref=e32]
+            - button "Plakkers" [ref=e33]
+          - combobox [ref=e34]:
+            - img
+          - combobox [ref=e35]
+        - generic [ref=e36]:
+          - generic [ref=e37]: 😬
+          - generic [ref=e38]:
+            - paragraph [ref=e39]: Nog niks hier nie
+            - paragraph [ref=e40]: Ons laai tans nuwe produkte op. Kom gou weer kyk.
+          - button "Wys alles" [ref=e41]
+    - contentinfo [ref=e42]:
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - link "Jy Alweer? Jy Alweer?" [ref=e47] [cursor=pointer]:
+              - /url: /
+              - img "Jy Alweer?" [ref=e48]
+              - generic [ref=e49]: Jy Alweer?
+            - paragraph [ref=e50]: Die amptelike tuiste van Suid-Afrika se snaakste memes. Lag jy alweer?
+            - generic [ref=e51]:
+              - link "Facebook" [ref=e52] [cursor=pointer]:
+                - /url: https://www.facebook.com/JyAlweer
+                - img [ref=e53]
+              - link "Instagram" [ref=e55] [cursor=pointer]:
+                - /url: https://instagram.com/jyalweer
+                - img [ref=e56]
+              - link "Twitter" [ref=e59] [cursor=pointer]:
+                - /url: https://twitter.com/jyalweer
+                - img [ref=e60]
+          - generic [ref=e62]:
+            - heading "Winkel" [level=3] [ref=e63]
+            - list [ref=e64]:
+              - listitem [ref=e65]:
+                - link "Hemde / T-Shirts" [ref=e66] [cursor=pointer]:
+                  - /url: /shop?category=tshirts
+              - listitem [ref=e67]:
+                - link "Truie / Hoodies" [ref=e68] [cursor=pointer]:
+                  - /url: /shop?category=hoodies
+              - listitem [ref=e69]:
+                - link "Pette / Caps" [ref=e70] [cursor=pointer]:
+                  - /url: /shop?category=caps
+              - listitem [ref=e71]:
+                - link "Plakkers / Stickers" [ref=e72] [cursor=pointer]:
+                  - /url: /shop?category=stickers
+          - generic [ref=e73]:
+            - heading "Inligting" [level=3] [ref=e74]
+            - list [ref=e75]:
+              - listitem [ref=e76]:
+                - link "Oor Ons" [ref=e77] [cursor=pointer]:
+                  - /url: /oor-ons
+              - listitem [ref=e78]:
+                - link "Kontak" [ref=e79] [cursor=pointer]:
+                  - /url: /kontak
+              - listitem [ref=e80]:
+                - link "Versendingsbeleid" [ref=e81] [cursor=pointer]:
+                  - /url: /versendingsbeleid
+              - listitem [ref=e82]:
+                - link "Terugsendings" [ref=e83] [cursor=pointer]:
+                  - /url: /terugsendings
+          - generic [ref=e84]:
+            - heading "Regsake" [level=3] [ref=e85]
+            - list [ref=e86]:
+              - listitem [ref=e87]:
+                - link "Privaatheidsbeleid" [ref=e88] [cursor=pointer]:
+                  - /url: /privaatheidsbeleid
+              - listitem [ref=e89]:
+                - link "Terme en Voorwaardes" [ref=e90] [cursor=pointer]:
+                  - /url: /terme-en-voorwaardes
+            - generic [ref=e91]:
+              - paragraph [ref=e92]: Veilige betaling
+              - generic [ref=e93]:
+                - generic [ref=e94]: Visa
+                - generic [ref=e95]: MC
+                - generic [ref=e96]: Stripe
+        - generic [ref=e97]:
+          - paragraph [ref=e98]: © 2026 Jy Alweer? — Alle regte voorbehou.
+          - paragraph [ref=e99]: Gemaak met ❤ in Suid-Afrika
+  - region "Notifications (F8)":
+    - list
+  - button "Open Next.js Dev Tools" [ref=e105] [cursor=pointer]:
+    - img [ref=e106]

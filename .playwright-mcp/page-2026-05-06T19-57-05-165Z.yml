@@ -1,0 +1,29 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - paragraph [ref=e5]: "404"
+      - generic [ref=e6]: 😅
+    - generic [ref=e7]:
+      - heading "Jy Alweer?" [level=1] [ref=e8]
+      - paragraph [ref=e9]: Hierdie bladsy bestaan nie.
+      - paragraph [ref=e10]: Of jy het die verkeerde URL getik, of iemand het die bladsy gesteel. (Waarskynlik jy.)
+    - generic [ref=e11]:
+      - paragraph [ref=e12]: "Jy: \"Ek gaan seker hierdie bladsy kry\""
+      - paragraph [ref=e13]: "Die internet:"
+      - paragraph [ref=e14]: 🙅‍♂️ 404
+    - generic [ref=e15]:
+      - link "Tuisblad" [ref=e16] [cursor=pointer]:
+        - /url: /
+        - button "Tuisblad" [ref=e17]:
+          - img
+          - text: Tuisblad
+      - link "Winkel" [ref=e18] [cursor=pointer]:
+        - /url: /shop
+        - button "Winkel" [ref=e19]:
+          - img
+          - text: Winkel
+  - region "Notifications (F8)":
+    - list
+  - button "Open Next.js Dev Tools" [ref=e25] [cursor=pointer]:
+    - img [ref=e26]
+  - alert [ref=e29]

@@ -1,0 +1,180 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - button "Open menu" [ref=e6]:
+            - img
+          - link "Jy Alweer?" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Jy Alweer?" [ref=e8]
+        - generic [ref=e9]:
+          - button "Change language" [ref=e10]:
+            - img
+          - link "Mandjie" [ref=e11] [cursor=pointer]:
+            - /url: /cart
+            - button [ref=e12]:
+              - img
+    - main [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e17]:
+          - img "Jy Alweer?" [ref=e19]
+          - heading "Oor Ons" [level=1] [ref=e20]
+          - paragraph [ref=e21]:
+            - text: Ons is nie net 'n meme-bladsy nie. Ons is
+            - emphasis [ref=e22]: die meme-bladsy
+            - text: vir Suid-Afrikaners wat weet waarvan ons praat.
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - paragraph [ref=e27]: 50k+
+            - paragraph [ref=e28]: Facebook volgelinge
+          - generic [ref=e29]:
+            - paragraph [ref=e30]: 100%
+            - paragraph [ref=e31]: Suid-Afrikaans
+          - generic [ref=e32]:
+            - paragraph [ref=e33]: R65
+            - paragraph [ref=e34]: Vlak versending
+          - generic [ref=e35]:
+            - paragraph [ref=e36]: 😂
+            - paragraph [ref=e37]: Lag per minuut
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - paragraph [ref=e42]: Ons storie
+            - heading "Gebore uit 'n liefde vir lag." [level=2] [ref=e43]
+            - generic [ref=e44]:
+              - paragraph [ref=e45]:
+                - text: Jy Alweer? is gebore op 'n gewone dag toe iemand 'n gewone meme gepos het — en die hele Suid-Afrika het herken.
+                - strong [ref=e46]: Dít is hoe ons werk.
+                - text: Nie gedwonge humor nie. Net dinge wat werklik snaaks is vir mense wat hier bly.
+              - paragraph [ref=e47]:
+                - text: Ons het begin as 'n Facebook-bladsy. Ons is nou 'n gemeenskap, 'n winkel, en 'n beweging van mense wat dagdag bewys dat Suid-Afrikaanse humor
+                - emphasis [ref=e48]: sonder weerga
+                - text: is.
+              - paragraph [ref=e49]: Elke produk wat jy van ons koop dra hierdie storie saam. Dra dit, deel dit, en kyk hoe vinnig iemand anders ook lag.
+          - generic [ref=e50]:
+            - generic [ref=e51]:
+              - generic [ref=e53]: 💡
+              - generic [ref=e55]:
+                - paragraph [ref=e56]: "2019"
+                - heading "Die begin" [level=3] [ref=e57]
+                - paragraph [ref=e58]: Iemand het 'n meme gepos. Mense het gelag. Jy Alweer? is gebore.
+            - generic [ref=e59]:
+              - generic [ref=e61]: 📈
+              - generic [ref=e63]:
+                - paragraph [ref=e64]: "2021"
+                - heading "Die gemeenskap groei" [level=3] [ref=e65]
+                - paragraph [ref=e66]: 10 000 volgelinge. Die kommentaar afdeling word 'n plek waar Suid-Afrikaners saam lag, stry, en mekaar herken.
+            - generic [ref=e67]:
+              - generic [ref=e69]: 👕
+              - generic [ref=e71]:
+                - paragraph [ref=e72]: "2023"
+                - heading "Merchandise — want die memes moet draagbaar wees" [level=3] [ref=e73]
+                - paragraph [ref=e74]: Die eerste hemde is gedruk. Binne 'n week uitverkoop. Blykbaar wil mense hê ander mense moet sien dat hulle Jy Alweer? ken.
+            - generic [ref=e75]:
+              - generic [ref=e77]: 🚀
+              - generic [ref=e78]:
+                - paragraph [ref=e79]: "2024"
+                - heading "Die amptelike winkel" [level=3] [ref=e80]
+                - paragraph [ref=e81]: jyalweer.co.za is gebore. Produkte, nuwe memes elke week, en 'n gemeenskap wat groter word as wat enige iemand verwag het.
+        - generic [ref=e83]:
+          - generic [ref=e84]:
+            - paragraph [ref=e85]: Ons waardes
+            - heading "Hoekom Jy Alweer?" [level=2] [ref=e86]
+          - generic [ref=e87]:
+            - generic [ref=e88]:
+              - generic [ref=e89]: 🇿🇦
+              - heading "Trots Suid-Afrikaans" [level=3] [ref=e90]
+              - paragraph [ref=e91]: Ons vier ons kultuur, ons taal, en ons unieke humor elke dag. Sonder verskoning.
+            - generic [ref=e92]:
+              - generic [ref=e93]: ✊
+              - heading "Kwaliteit of niks" [level=3] [ref=e94]
+              - paragraph [ref=e95]: As jy 'n hemp koop, wil jy hê dit moet nog steek na 50 was. Ons ook.
+            - generic [ref=e96]:
+              - generic [ref=e97]: 😂
+              - heading "Humor is ernstige besigheid" [level=3] [ref=e98]
+              - paragraph [ref=e99]: Ons neem ons lag baie ernstig. Elke meme is gekies met sorg. Elke produk met bedoeling.
+            - generic [ref=e100]:
+              - generic [ref=e101]: 🤝
+              - heading "Gemeenskap eerste" [level=3] [ref=e102]
+              - paragraph [ref=e103]: Jy is nie net 'n koper nie. Jy is deel van 'n beweging van mense wat dieselfde dinge snaaks vind.
+        - generic [ref=e105]:
+          - paragraph [ref=e106]:
+            - text: Klaar gelees?
+            - text: Koop iets.
+          - paragraph [ref=e107]: Die beste manier om deel van die familie te word is om iets te dra wat almal laat weet jy is dit.
+          - link "Sien ons winkel" [ref=e108] [cursor=pointer]:
+            - /url: /shop
+            - button "Sien ons winkel" [ref=e109]:
+              - text: Sien ons winkel
+              - img
+    - contentinfo [ref=e110]:
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - generic [ref=e114]:
+            - link "Jy Alweer? Jy Alweer?" [ref=e115] [cursor=pointer]:
+              - /url: /
+              - img "Jy Alweer?" [ref=e116]
+              - generic [ref=e117]: Jy Alweer?
+            - paragraph [ref=e118]: Die amptelike tuiste van Suid-Afrika se snaakste memes. Lag jy alweer?
+            - generic [ref=e119]:
+              - link "Facebook" [ref=e120] [cursor=pointer]:
+                - /url: https://www.facebook.com/JyAlweer
+                - img [ref=e121]
+              - link "Instagram" [ref=e123] [cursor=pointer]:
+                - /url: https://instagram.com/jyalweer
+                - img [ref=e124]
+              - link "Twitter" [ref=e127] [cursor=pointer]:
+                - /url: https://twitter.com/jyalweer
+                - img [ref=e128]
+          - generic [ref=e130]:
+            - heading "Winkel" [level=3] [ref=e131]
+            - list [ref=e132]:
+              - listitem [ref=e133]:
+                - link "Hemde / T-Shirts" [ref=e134] [cursor=pointer]:
+                  - /url: /shop?category=tshirts
+              - listitem [ref=e135]:
+                - link "Truie / Hoodies" [ref=e136] [cursor=pointer]:
+                  - /url: /shop?category=hoodies
+              - listitem [ref=e137]:
+                - link "Pette / Caps" [ref=e138] [cursor=pointer]:
+                  - /url: /shop?category=caps
+              - listitem [ref=e139]:
+                - link "Plakkers / Stickers" [ref=e140] [cursor=pointer]:
+                  - /url: /shop?category=stickers
+          - generic [ref=e141]:
+            - heading "Inligting" [level=3] [ref=e142]
+            - list [ref=e143]:
+              - listitem [ref=e144]:
+                - link "Oor Ons" [ref=e145] [cursor=pointer]:
+                  - /url: /oor-ons
+              - listitem [ref=e146]:
+                - link "Kontak" [ref=e147] [cursor=pointer]:
+                  - /url: /kontak
+              - listitem [ref=e148]:
+                - link "Versendingsbeleid" [ref=e149] [cursor=pointer]:
+                  - /url: /versendingsbeleid
+              - listitem [ref=e150]:
+                - link "Terugsendings" [ref=e151] [cursor=pointer]:
+                  - /url: /terugsendings
+          - generic [ref=e152]:
+            - heading "Regsake" [level=3] [ref=e153]
+            - list [ref=e154]:
+              - listitem [ref=e155]:
+                - link "Privaatheidsbeleid" [ref=e156] [cursor=pointer]:
+                  - /url: /privaatheidsbeleid
+              - listitem [ref=e157]:
+                - link "Terme en Voorwaardes" [ref=e158] [cursor=pointer]:
+                  - /url: /terme-en-voorwaardes
+            - generic [ref=e159]:
+              - paragraph [ref=e160]: Veilige betaling
+              - generic [ref=e161]:
+                - generic [ref=e162]: Visa
+                - generic [ref=e163]: MC
+                - generic [ref=e164]: Stripe
+        - generic [ref=e165]:
+          - paragraph [ref=e166]: © 2026 Jy Alweer? — Alle regte voorbehou.
+          - paragraph [ref=e167]: Gemaak met ❤ in Suid-Afrika
+  - region "Notifications (F8)":
+    - list
+  - button "Open Next.js Dev Tools" [ref=e173] [cursor=pointer]:
+    - img [ref=e174]

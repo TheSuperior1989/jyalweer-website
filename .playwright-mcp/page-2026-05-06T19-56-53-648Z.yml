@@ -1,0 +1,154 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - button "Open menu" [ref=e6]:
+            - img
+          - link "Jy Alweer?" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Jy Alweer?" [ref=e8]
+        - generic [ref=e9]:
+          - button "Change language" [ref=e10]:
+            - img
+          - link "Mandjie" [ref=e11] [cursor=pointer]:
+            - /url: /cart
+            - button [ref=e12]:
+              - img
+    - main [ref=e13]:
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - img [ref=e21]
+            - generic [ref=e23]: Nuwe items elke week · New drops weekly
+          - heading "Jy Alweer?" [level=1] [ref=e24]:
+            - generic [ref=e25]: Jy
+            - generic [ref=e26]:
+              - text: Alweer?
+              - img [ref=e27]
+          - paragraph [ref=e29]: Die amptelike tuiste van Suid-Afrika se gunsteling memes
+          - generic [ref=e30]:
+            - link "Koop Nou" [ref=e31] [cursor=pointer]:
+              - /url: /shop
+              - button "Koop Nou" [ref=e32]:
+                - img
+                - text: Koop Nou
+            - link "Blaai Deur Memes" [ref=e33] [cursor=pointer]:
+              - /url: /memes
+              - button "Blaai Deur Memes" [ref=e34]:
+                - text: Blaai Deur Memes
+                - img
+          - generic [ref=e35]:
+            - generic [ref=e36]:
+              - generic [ref=e37]: 😂
+              - generic [ref=e38]: 50k+ volgelinge
+              - generic [ref=e39]: op Facebook
+            - generic [ref=e41]:
+              - generic [ref=e42]: 🇿🇦
+              - generic [ref=e43]: 100% Suid-Afrikaans
+            - generic [ref=e45]:
+              - generic [ref=e46]: 🚚
+              - generic [ref=e47]: Gratis versending oor R1000
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e53]:
+              - img "Jy Alweer? Logo" [ref=e54]
+              - generic [ref=e55]: "?"
+            - generic [ref=e56]:
+              - paragraph [ref=e57]: Jy Alweer?
+              - paragraph [ref=e58]: 😂 Meme of the day
+            - generic [ref=e59]:
+              - paragraph [ref=e60]: 🔥 Limited Drop
+              - paragraph [ref=e61]: Bestel nou
+          - generic:
+            - img "Jy Alweer? Meme"
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - heading "Fresh from Facebook" [level=2] [ref=e65]
+          - paragraph [ref=e66]: Follow us for daily memes and updates
+        - generic [ref=e68]:
+          - generic [ref=e70]: Latest from Jy Alweer?
+          - blockquote [ref=e73]:
+            - link "Jy Alweer?" [ref=e74] [cursor=pointer]:
+              - /url: https://www.facebook.com/JyAlweer
+      - generic [ref=e79]:
+        - img [ref=e82]
+        - heading "Bly Op Hoogte" [level=2] [ref=e84]
+        - paragraph [ref=e85]: Ontvang nuwe memes en spesiale aanbiedings in jou inkassie
+        - generic [ref=e86]:
+          - textbox "Jou e-pos adres" [ref=e87]
+          - button "Teken In" [ref=e88]:
+            - img
+            - text: Teken In
+        - paragraph [ref=e89]: Geen spam nie. Jy kan enige tyd uitteken.
+    - contentinfo [ref=e90]:
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic [ref=e94]:
+            - link "Jy Alweer? Jy Alweer?" [ref=e95] [cursor=pointer]:
+              - /url: /
+              - img "Jy Alweer?" [ref=e96]
+              - generic [ref=e97]: Jy Alweer?
+            - paragraph [ref=e98]: Die amptelike tuiste van Suid-Afrika se snaakste memes. Lag jy alweer?
+            - generic [ref=e99]:
+              - link "Facebook" [ref=e100] [cursor=pointer]:
+                - /url: https://www.facebook.com/JyAlweer
+                - img [ref=e101]
+              - link "Instagram" [ref=e103] [cursor=pointer]:
+                - /url: https://instagram.com/jyalweer
+                - img [ref=e104]
+              - link "Twitter" [ref=e107] [cursor=pointer]:
+                - /url: https://twitter.com/jyalweer
+                - img [ref=e108]
+          - generic [ref=e110]:
+            - heading "Winkel" [level=3] [ref=e111]
+            - list [ref=e112]:
+              - listitem [ref=e113]:
+                - link "Hemde / T-Shirts" [ref=e114] [cursor=pointer]:
+                  - /url: /shop?category=tshirts
+              - listitem [ref=e115]:
+                - link "Truie / Hoodies" [ref=e116] [cursor=pointer]:
+                  - /url: /shop?category=hoodies
+              - listitem [ref=e117]:
+                - link "Pette / Caps" [ref=e118] [cursor=pointer]:
+                  - /url: /shop?category=caps
+              - listitem [ref=e119]:
+                - link "Plakkers / Stickers" [ref=e120] [cursor=pointer]:
+                  - /url: /shop?category=stickers
+          - generic [ref=e121]:
+            - heading "Inligting" [level=3] [ref=e122]
+            - list [ref=e123]:
+              - listitem [ref=e124]:
+                - link "Oor Ons" [ref=e125] [cursor=pointer]:
+                  - /url: /oor-ons
+              - listitem [ref=e126]:
+                - link "Kontak" [ref=e127] [cursor=pointer]:
+                  - /url: /kontak
+              - listitem [ref=e128]:
+                - link "Versendingsbeleid" [ref=e129] [cursor=pointer]:
+                  - /url: /versendingsbeleid
+              - listitem [ref=e130]:
+                - link "Terugsendings" [ref=e131] [cursor=pointer]:
+                  - /url: /terugsendings
+          - generic [ref=e132]:
+            - heading "Regsake" [level=3] [ref=e133]
+            - list [ref=e134]:
+              - listitem [ref=e135]:
+                - link "Privaatheidsbeleid" [ref=e136] [cursor=pointer]:
+                  - /url: /privaatheidsbeleid
+              - listitem [ref=e137]:
+                - link "Terme en Voorwaardes" [ref=e138] [cursor=pointer]:
+                  - /url: /terme-en-voorwaardes
+            - generic [ref=e139]:
+              - paragraph [ref=e140]: Veilige betaling
+              - generic [ref=e141]:
+                - generic [ref=e142]: Visa
+                - generic [ref=e143]: MC
+                - generic [ref=e144]: Stripe
+        - generic [ref=e145]:
+          - paragraph [ref=e146]: © 2026 Jy Alweer? — Alle regte voorbehou.
+          - paragraph [ref=e147]: Gemaak met ❤ in Suid-Afrika
+  - region "Notifications (F8)":
+    - list
+  - button "Open Next.js Dev Tools" [ref=e153] [cursor=pointer]:
+    - img [ref=e154]
