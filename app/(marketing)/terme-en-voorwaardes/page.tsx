@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Card, CardContent } from "@/components/ui/card"
+import { LegalShell } from "@/components/brand/legal-shell"
 
 export const metadata: Metadata = {
   title: "Terme en Voorwaardes",
@@ -8,15 +9,8 @@ export const metadata: Metadata = {
 
 export default function TermeEnVoorwaardesPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">Terme en Voorwaardes</h1>
-        <p className="text-xl text-muted-foreground">
-          Laas opgedateer: {new Date().toLocaleDateString('af-ZA', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </p>
-      </div>
-
-      <div className="space-y-6">
+    <LegalShell title="Terme en Voorwaardes" subtitle="Laas opgedateer: 1 Februarie 2026">
+      <div className="space-y-5">
         <Card>
           <CardContent className="pt-6">
             <div className="space-y-4 text-muted-foreground">
@@ -251,7 +245,7 @@ export default function TermeEnVoorwaardesPage() {
           </p>
         </div>
       </div>
-    </div>
+    </LegalShell>
   )
 }
 

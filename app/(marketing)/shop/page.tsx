@@ -59,7 +59,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
   }
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12">
+    <div className="page-shell">
       <ShopGrid products={products} categories={categories} initialCategory={params.category} initialSort={params.sort} />
     </div>
   )

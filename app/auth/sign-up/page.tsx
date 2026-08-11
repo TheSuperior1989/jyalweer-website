@@ -92,11 +92,16 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4 py-16">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center px-4 py-16 section-charcoal relative overflow-hidden">
+      <span aria-hidden className="diamond-deco right-[12%] top-[15%] hidden sm:block" />
+      <span aria-hidden className="diamond-deco-solid left-[10%] bottom-[18%] hidden sm:block" />
+      <Card className="w-full max-w-md relative z-10 border-border shadow-2xl">
         <CardHeader className="text-center">
-          <Link href="/" className="inline-block mb-4">
-            <span className="text-2xl font-bold text-primary">Jy Alweer?</span>
+          <Link href="/" className="inline-flex flex-col items-center gap-1 mb-4 group">
+            <span className="font-display text-2xl font-black tracking-tight text-foreground group-hover:opacity-80 transition-opacity">
+              Jy Alweer?
+            </span>
+            <span className="font-script text-lg text-muted-foreground">Grap blad</span>
           </Link>
           <CardTitle className="text-2xl">{t.title}</CardTitle>
           <CardDescription>{t.subtitle}</CardDescription>
@@ -178,7 +183,7 @@ export default function SignUpPage() {
             </Button>
             <p className="text-sm text-muted-foreground text-center">
               {t.hasAccount}{" "}
-              <Link href="/auth/login" className="text-primary hover:underline font-medium">
+              <Link href="/auth/login" className="text-foreground hover:underline font-semibold">
                 {t.signIn}
               </Link>
             </p>

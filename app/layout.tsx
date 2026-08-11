@@ -1,6 +1,6 @@
 import React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter, Space_Grotesk, Geist_Mono } from "next/font/google"
+import { Inter, Space_Grotesk, Geist_Mono, Pacifico } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Toaster } from "@/components/ui/toaster"
@@ -14,6 +14,12 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
 })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
+/** Script accent matching logo "Grap blad" wordmark */
+const pacifico = Pacifico({
+  subsets: ["latin"],
+  variable: "--font-script",
+  weight: "400",
+})
 
 export const metadata: Metadata = {
   title: {
@@ -55,10 +61,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#faf6ec" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
+  themeColor: "#1a1f27",
   width: "device-width",
   initialScale: 1,
 }
@@ -68,7 +71,7 @@ const orgJsonLd = {
   "@type": "Organization",
   name: "Jy Alweer?",
   url: "https://jyalweer.co.za",
-  logo: "https://jyalweer.co.za/images/JyAlweerGrapBlad.svg",
+  logo: "https://jyalweer.co.za/images/jyalweer-logo.jpg",
   sameAs: [
     "https://www.facebook.com/JyAlweer",
     "https://instagram.com/jyalweer",
@@ -89,7 +92,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="af" suppressHydrationWarning>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable} ${pacifico.variable} font-sans antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}

@@ -120,14 +120,20 @@ export function CheckoutForm() {
 
   return (
     <>
-      <h1 className="mb-8 font-serif text-3xl font-bold text-foreground md:text-4xl">{t("checkout.title")}</h1>
+      <div className="mb-10">
+        <p className="page-kicker">
+          {language === "af" ? "Betaal veilig" : "Secure checkout"}
+        </p>
+        <h1 className="page-title">{t("checkout.title")}</h1>
+        <div className="mt-3 brand-rule" />
+      </div>
 
       <div className="grid gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2">
           {step === "shipping" ? (
             <Card className="border-border bg-card">
               <CardHeader>
-                <CardTitle className="font-serif">{t("checkout.shipping.title")}</CardTitle>
+                <CardTitle>{t("checkout.shipping.title")}</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleShippingSubmit} className="space-y-6">
@@ -238,7 +244,7 @@ export function CheckoutForm() {
           ) : (
             <Card className="border-border bg-card">
               <CardHeader>
-                <CardTitle className="font-serif">{t("checkout.payment.title")}</CardTitle>
+                <CardTitle>{t("checkout.payment.title")}</CardTitle>
               </CardHeader>
               <CardContent>
                 {clientSecret && (
@@ -260,7 +266,7 @@ export function CheckoutForm() {
         <div className="lg:col-span-1">
           <Card className="sticky top-24 border-border bg-card">
             <CardHeader>
-              <CardTitle className="font-serif">
+              <CardTitle>
                 {language === "af" ? "Jou Bestelling" : "Your Order"}
               </CardTitle>
             </CardHeader>

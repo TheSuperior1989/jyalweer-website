@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { useState, useEffect } from "react"
 import { useLanguage } from "@/lib/language-context"
 import { useCart } from "@/lib/cart-context"
@@ -16,6 +15,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, ShoppingCart, User, Globe, X, Sparkles } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
 import type { User as SupabaseUser } from "@supabase/supabase-js"
+import { Logo } from "@/components/brand/logo"
 
 export function Header() {
   const { language, setLanguage, t } = useLanguage()
@@ -73,10 +73,11 @@ export function Header() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-200 ${
         scrolled
-          ? "border-b border-border bg-background/95 backdrop-blur-md shadow-sm"
-          : "bg-background/80 backdrop-blur-sm"
+          ? "border-b border-white/10 bg-background/85 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+          : "border-b border-white/5 bg-background/70 backdrop-blur-md"
       }`}
     >
+
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         {/* Left: mobile menu + logo */}
         <div className="flex items-center gap-4">
@@ -87,23 +88,8 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-72 bg-background p-0">
-              <div className="flex items-center justify-between border-b border-border px-6 py-4">
-                <Link
-                  href="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2"
-                >
-                  <Image
-                    src="/images/JyAlweerGrapBlad.svg"
-                    alt="Jy Alweer?"
-                    width={36}
-                    height={36}
-                    className="shrink-0"
-                  />
-                  <span className="font-display text-lg font-bold tracking-tight">
-                    Jy Alweer?
-                  </span>
-                </Link>
+              <div className="flex items-center justify-between border-b border-border px-5 py-4">
+                <Logo size="md" showWordmark={false} priority={false} />
                 <Button
                   variant="ghost"
                   size="icon"
@@ -151,7 +137,6 @@ export function Header() {
                 )}
               </nav>
 
-              {/* Mobile CTA */}
               <div className="border-t border-border px-4 py-6">
                 <Link href="/shop" onClick={() => setMobileMenuOpen(false)}>
                   <Button className="w-full gap-2 font-bold" size="lg">
@@ -164,22 +149,10 @@ export function Header() {
           </Sheet>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <Image
-              src="/images/JyAlweerGrapBlad.svg"
-              alt="Jy Alweer?"
-              width={36}
-              height={36}
-              className="shrink-0 transition-transform duration-200 group-hover:scale-110"
-              priority
-            />
-            <span className="font-display text-xl font-bold tracking-tight text-foreground hidden sm:block">
-              Jy Alweer?
-            </span>
-          </Link>
+          <Logo size="md" showWordmark priority />
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-1 md:flex ml-4">
+          <nav className="hidden items-center gap-0.5 md:flex ml-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -194,7 +167,6 @@ export function Header() {
 
         {/* Right: actions */}
         <div className="flex items-center gap-1">
-          {/* Language switcher */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="h-9 w-9" aria-label="Change language">
@@ -217,7 +189,6 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* Cart */}
           <Link href="/cart" aria-label={t("nav.cart")}>
             <Button variant="ghost" size="icon" className="relative h-9 w-9">
               <ShoppingCart className="h-4 w-4" />
@@ -229,7 +200,6 @@ export function Header() {
             </Button>
           </Link>
 
-          {/* User / auth */}
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -257,10 +227,7 @@ export function Header() {
                 </Button>
               </Link>
               <Link href="/shop">
-                <Button
-                  size="sm"
-                  className="bg-foreground text-background hover:bg-foreground/90 font-semibold text-sm"
-                >
+                <Button size="sm" className="font-semibold text-sm">
                   {t("nav.shop")}
                 </Button>
               </Link>

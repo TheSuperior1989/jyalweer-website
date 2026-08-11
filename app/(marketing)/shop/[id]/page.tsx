@@ -62,7 +62,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     }
 
     return (
-      <div className="mx-auto max-w-7xl px-4 py-12">
+      <div className="page-shell">
         <ProductDetails product={product} relatedProducts={relatedProducts} />
       </div>
     )

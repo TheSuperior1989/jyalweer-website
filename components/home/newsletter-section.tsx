@@ -5,7 +5,7 @@ import { useLanguage } from "@/lib/language-context"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
-import { Mail, Loader2, Check, Zap } from "lucide-react"
+import { Mail, Loader2, Check, Sparkles } from "lucide-react"
 import { subscribeToNewsletter } from "@/app/actions/newsletter"
 
 export function NewsletterSection() {
@@ -36,35 +36,46 @@ export function NewsletterSection() {
   }
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-28 section-ink">
-      {/* Decorative lime circle */}
+    <section className="relative overflow-hidden py-20 md:py-28 section-charcoal">
+      {/* Diamond decoration — logo language */}
       <div
         aria-hidden
-        className="absolute -right-20 top-1/2 -translate-y-1/2 h-72 w-72 rounded-full opacity-5"
-        style={{ background: "var(--lime)" }}
+        className="pointer-events-none absolute -right-16 top-1/2 -translate-y-1/2 h-64 w-64 rotate-45 border border-dashed border-white/10"
       />
       <div
         aria-hidden
-        className="absolute -left-16 bottom-0 h-48 w-48 rounded-full opacity-5"
-        style={{ background: "var(--terra)" }}
+        className="pointer-events-none absolute -left-12 bottom-8 h-40 w-40 rotate-45 border border-white/8"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 65%)",
+        }}
       />
 
       <div className="relative mx-auto max-w-7xl px-4">
         <div className="mx-auto max-w-2xl text-center">
-          {/* Icon pill */}
           <div className="mb-6 flex justify-center">
-            <div
-              className="flex h-14 w-14 items-center justify-center rounded-2xl"
-              style={{ background: "var(--lime)" }}
-            >
-              <Zap className="h-7 w-7" style={{ color: "var(--ink)" }} />
+            <div className="relative inline-flex items-center justify-center">
+              <span
+                aria-hidden
+                className="absolute -inset-2 rotate-45 rounded-sm border border-dashed border-white/30"
+              />
+              <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-white shadow-[0_0_28px_rgba(255,255,255,0.25)]">
+                <Sparkles className="h-6 w-6" style={{ color: "var(--ink)" }} />
+              </div>
             </div>
           </div>
 
-          <h2 className="mb-3 font-display text-4xl font-black tracking-tight md:text-5xl" style={{ color: "var(--ink-foreground)" }}>
+          <h2
+            className="mb-3 font-display text-4xl font-black tracking-tight md:text-5xl"
+            style={{ color: "var(--ink-foreground)" }}
+          >
             {t("home.newsletter.title")}
           </h2>
-          <p className="mb-8 text-lg" style={{ color: "rgba(250,246,236,0.65)" }}>
+          <p className="mb-8 text-lg text-white/55">
             {t("home.newsletter.subtitle")}
           </p>
 
@@ -82,7 +93,6 @@ export function NewsletterSection() {
               type="submit"
               disabled={isLoading || isSuccess}
               className="h-12 rounded-xl font-bold px-8 shrink-0"
-              style={{ background: "var(--lime)", color: "var(--ink)" }}
             >
               {isLoading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -100,7 +110,7 @@ export function NewsletterSection() {
             </Button>
           </form>
 
-          <p className="mt-4 text-sm" style={{ color: "rgba(250,246,236,0.45)" }}>
+          <p className="mt-4 text-sm text-white/35">
             {language === "af"
               ? "Geen spam nie. Jy kan enige tyd uitteken."
               : "No spam. Unsubscribe anytime."}

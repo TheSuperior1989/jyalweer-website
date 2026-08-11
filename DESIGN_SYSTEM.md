@@ -1,10 +1,14 @@
-# DESIGN_SYSTEM.md — Jy Alweer?
+# DESIGN_SYSTEM.md — Jy Alweer? Grap Blad
 
 ## Brand DNA
 
 **Vibe**: Bold South African meme-merch label. Irreverent, confident, wearable.
-**Comparable brands**: MSCHF · Liquid Death · Arc Browser (premium + personality) meets SA street culture.
-**NOT**: Generic SaaS · Cheap meme-page energy · Corporate e-commerce.
+**Logo mark**: White diamond badge on charcoal slate — solid + dashed rhombus, bold sans + script *Grap blad*.
+**Design language**: Monochrome charcoal streetwear. The entire site lives inside the logo's world: slate surfaces, white type, dashed diamond motifs. No colour accents — white *is* the accent.
+**Comparable brands**: MSCHF · Liquid Death · premium street culture with SA humour.
+**NOT**: Generic SaaS · Cheap meme-page energy · Corporate e-commerce · Neon colour splashes.
+
+**Primary logo asset**: `/images/jyalweer-logo.jpg` via `<Logo />` (`components/brand/logo.tsx`).
 
 ---
 
@@ -12,159 +16,114 @@
 
 | Role | Font | Weights | Usage |
 |------|------|---------|-------|
-| Display / Headlines | **Space Grotesk** | 700, 900 | `font-display`, all `<h1>–<h3>`, hero text |
+| Display / Headlines | **Space Grotesk** | 700 | `font-display`, all headings, hero text |
 | Body | **Inter** | 400, 500 | `font-sans`, body copy, UI labels |
-| Mono | **Geist Mono** | 400 | Code snippets only |
+| Script accent | **Pacifico** | 400 | `font-script` — matches logo "Grap blad" script |
+| Mono | **Geist Mono** | 400 | Code / order numbers |
 
 ### Rules
 - Headlines: `letter-spacing: -0.02em` — always tight
-- Body: default tracking, max line-length ~70ch
-- Never mix more than 2 type sizes in a single visual block
+- Script only for brand tagline moments — never body copy
+- Use `page-title` / `page-kicker` / `brand-rule` for consistent page intros
 
 ---
 
-## Colour Palette
-
-| Token | OKLCH | Hex (approx) | Usage |
-|-------|-------|--------------|-------|
-| `--background` | `oklch(0.97 0.012 80)` | `#faf6ec` | Page backgrounds |
-| `--foreground` | `oklch(0.10 0.010 50)` | `#0f0d0b` | Primary text, ink fills |
-| `--primary` | `oklch(0.85 0.23 127)` | `#c8ff00` | Acid lime — CTAs, badges, highlights |
-| `--primary-foreground` | `oklch(0.10 0.010 50)` | `#0f0d0b` | Text on lime |
-| `--accent` | `oklch(0.52 0.14 42)` | `#c4622d` | Terracotta — secondary accents |
-| `--accent-foreground` | `oklch(0.97 0.012 80)` | `#faf6ec` | Text on terracotta |
-| `--ink` | `#0a0a0a` | — | Hero sections, dark panels |
-| `--lime` | `#c8ff00` | — | Raw lime reference |
-| `--forest` | `#1a4a1a` | — | Logo green reference |
-| `--terra` | `#c4622d` | — | Terracotta reference |
-| `--muted` | `oklch(0.93 0.012 80)` | `#ede8de` | Subtle backgrounds |
-| `--muted-foreground` | `oklch(0.46 0.018 55)` | `#7a6c5a` | Secondary text |
-| `--border` | `oklch(0.85 0.018 75)` | `#d9d1c4` | Borders, dividers |
-
-### Contrast Requirements
-- Lime `#c8ff00` on Ink `#0a0a0a`: **18:1** — exceeds AAA ✓
-- Terracotta on cream: **4.6:1** — meets AA ✓
-- All body text on background: **14:1+** ✓
-
----
-
-## Spacing Scale
-
-Uses Tailwind's default scale (4px base unit). Key landmarks:
-- `p-4` (16px) — card internal padding minimum
-- `gap-6` (24px) — standard grid gap
-- `py-16/py-20` — section vertical padding (mobile)
-- `py-24/py-28` — section vertical padding (desktop)
-- `max-w-7xl` — content max width
-
----
-
-## Radius Scale
+## Colour Palette — dark-only, cool slate (hue ≈ 250)
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--radius-sm` | 6px | Small badges, inputs |
-| `--radius` / `--radius-lg` | 10px | Cards, buttons |
-| `--radius-xl` | 16px | Feature cards, hero blocks |
-| `--radius-2xl` | 22px | Large hero cards |
-| `rounded-full` | 9999px | Pills, avatar, icon circles |
+| `--ink` | `#0d1015` | Deepest — footer, page-hero bands, ticker strip |
+| `--background` | slate ≈ `#171c24` | Page ground |
+| `--card` | slate ≈ `#20262f` | Elevated panels (the logo slate) |
+| `--charcoal` | `#1e242d` | `.section-charcoal` hero/CTA bands |
+| `--charcoal-soft` | `#262d38` | `.section-charcoal-soft` |
+| `--primary` | white | The punch CTA — white on charcoal, like the logo |
+| `--primary-foreground` | ink | Text on primary |
+| `--muted-foreground` | cool grey | Secondary text |
+| `--border` | slate ≈ white/14 | Borders, dividers |
+| `--destructive` | red | Errors only — the single non-mono colour |
+
+### Surface rhythm
+ink (deepest) → background → card/charcoal (elevated). Bands are separated by
+white gradient hairlines, not colour changes.
+
+### Contrast
+- White on any slate surface: excellent
+- Muted-foreground on background/card: AA+
 
 ---
 
-## Shadow Tokens
+## Components
 
-| Class | Usage |
-|-------|-------|
-| `shadow-sm` | Subtle lift (nav items) |
-| `shadow-lg` | Cards on hover |
-| `shadow-2xl` | Hero floaters, modals |
+### Buttons (`Button`)
+| Variant | Use |
+|---------|-----|
+| `default` | White punch CTA with soft white glow — primary actions |
+| `outline` | White/25 border; add `border-dashed` for the logo's dashed language |
+| `secondary` | Elevated slate surface |
+| `ghost` | Tertiary / nav (white/10 hover) |
+| `destructive` | Errors / removals only |
+
+### Page chrome
+| Piece | Use |
+|-------|-----|
+| `<PageHeader variant="band\|inline" />` | Page titles |
+| `<LegalShell />` | Policy pages |
+| `.page-shell` / `.page-shell-narrow` | Content width + padding |
+| `.page-hero-band` | Ink hero strip with radial washes |
+| `.brand-rule` | Glowing white underline accent |
+| `.diamond-deco` | Rotated dashed square decoration |
+| `.marquee-strip` / `.marquee-track` | Streetwear wordmark ticker |
+
+### Cards
+- `rounded-2xl border border-border bg-card`
+- Product cards: `card-lift` hover (lift + white glow border)
+
+### Badges
+- `variant="punch"` white-on-ink with glow — limited drops / featured
+- `variant="default"` white primary
+- `variant="secondary"` slate
+- `variant="outline"` dashed white/25
 
 ---
 
-## Motion Tokens
+## Spacing
+
+- Section padding: `py-20 md:py-28`
+- Content max: `max-w-7xl` / narrow `max-w-4xl`
+- Card padding: `p-4` min, `p-6` standard
+
+---
+
+## Motion
 
 ```css
---ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1)   /* bouncy entries */
---ease-out:     cubic-bezier(0.16, 1, 0.3, 1)        /* smooth exits */
---duration-fast: 150ms  /* micro (hover state changes) */
---duration-mid:  250ms  /* standard transitions */
---duration-slow: 400ms  /* page-level reveals */
+--ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1)
+--ease-out:    cubic-bezier(0.16, 1, 0.3, 1)
+--duration-fast: 150ms
+--duration-mid:  250ms
+--duration-slow: 400ms
 ```
 
-### Animation Classes
-| Class | Effect | Usage |
-|-------|--------|-------|
-| `.animate-fade-up` | Fade + 24px rise | Section entry |
-| `.animate-slide-left` | Fade + slide right→ | Left column reveals |
-| `.animate-slide-right` | Fade + slide left→ | Right column reveals |
-| `.animate-scale-in` | Scale 0.92 → 1 | Modal entries |
-| `.animate-float` | Slow vertical bob | Hero logo mark |
-| `.animate-spin-slow` | 20s rotation | Decorative ring |
-| `.animate-sparkle` | Pulse scale | Icon accents |
-| `.delay-100` – `.delay-500` | Stagger delays | Sequential reveals |
-
-All animations respect `prefers-reduced-motion: reduce` — they're disabled when set.
+Respect `prefers-reduced-motion` (includes the marquee).
 
 ---
 
-## Component Usage
-
-### Button
-```tsx
-// Primary (dark) — main CTAs
-<Button style={{ background: "var(--ink)", color: "var(--ink-foreground)" }}>
-  Shop Now
-</Button>
-
-// Lime — hero CTAs, newsletter submit
-<Button style={{ background: "var(--lime)", color: "var(--ink)" }}>
-  Shop Now
-</Button>
-
-// Outline — secondary actions
-<Button variant="outline">Browse Memes</Button>
-
-// Ghost — tertiary, nav links
-<Button variant="ghost">View All</Button>
-```
-
-### Card
-```tsx
-// Standard product / meme card
-<div className="rounded-xl border border-border bg-card card-lift">
-
-// Ink dark section (hero, newsletter)
-<section className="section-ink">
-
-// Muted background variant
-<section className="bg-muted/30">
-```
-
-### Badge
-```tsx
-// Lime accent (limited edition, featured)
-<Badge className="badge-lime">Beperkte Uitgawe</Badge>
-
-// Secondary (out of stock)
-<Badge variant="secondary">Uit Voorraad</Badge>
-```
-
-### Layout
-- Use `section-ink` class for full-bleed dark sections
-- All sections: `py-20 md:py-28` padding
-- Content containers: `mx-auto max-w-7xl px-4`
-- Lime accent top bar: `h-1 style={{ background: "var(--lime)" }}`
-
----
-
-## Utility Classes (custom)
+## Utility classes
 
 | Class | Effect |
 |-------|--------|
-| `.section-ink` | Black background + cream foreground |
-| `.badge-lime` | Lime background + ink text, bold |
-| `.card-lift` | Hover: translateY(-4px) + shadow |
-| `.hover-underline` | Animated underline on hover |
-| `.bg-dot-grid` | Dot pattern background |
-| `.lime-glow` | Pulsing lime box-shadow |
-| `.texture-noise::after` | Subtle noise overlay |
+| `.section-charcoal` / `.section-ink` | Brand slate surfaces |
+| `.badge-punch` | White pill with glow |
+| `.card-lift` | Hover lift + white glow |
+| `.neon-glow` | Soft logo glow |
+| `.font-script` | Pacifico |
+| `.media-frame` | Product image frame |
+| `.border-dashed-brand` | Logo-style dashed border |
+| `.bg-dot-grid` | Faint white dot grid |
+
+## Hard rules
+
+- **No colour accents.** White, slate, ink — destructive red is the only exception.
+- White gradient hairlines (`transparent → white/50 → transparent`) separate major bands.
+- Dashed borders and rotated squares are the brand's decorative vocabulary.

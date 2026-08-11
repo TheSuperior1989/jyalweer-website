@@ -58,20 +58,51 @@ export function OorOnsContent() {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section className="relative section-ink py-24 md:py-32">
-        <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "var(--lime)" }} />
-        <div aria-hidden className="absolute inset-0 bg-dot-grid opacity-10 pointer-events-none" style={{ color: "var(--lime)" }} />
+      <section className="relative section-charcoal py-24 md:py-32 overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute top-0 left-0 right-0 h-px"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-10 top-16 h-40 w-40 rotate-45 border border-dashed border-white/10"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-8 bottom-12 h-28 w-28 rotate-45 border border-white/8"
+        />
         <div className="relative mx-auto max-w-4xl px-4 text-center">
-          <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl shadow-2xl" style={{ background: "var(--lime)" }}>
-            <Image src="/images/JyAlweerGrapBlad.svg" alt="Jy Alweer?" width={52} height={52} className="object-contain" />
+          <div className="relative mx-auto mb-8 inline-flex">
+            <div
+              aria-hidden
+              className="absolute -inset-4 rotate-45 rounded-sm border border-dashed border-white/30"
+            />
+            <div
+              aria-hidden
+              className="absolute -inset-1.5 rotate-45 rounded-sm border-2 border-white/70"
+            />
+            <div className="relative z-10 overflow-hidden rounded-xl shadow-2xl ring-1 ring-white/10">
+              <Image
+                src="/images/jyalweer-logo.jpg"
+                alt="Jy Alweer? Grap blad"
+                width={96}
+                height={96}
+                className="h-24 w-24 object-cover"
+                priority
+              />
+            </div>
           </div>
-          <h1 className="font-display text-5xl font-black tracking-tight md:text-7xl" style={{ color: "var(--ink-foreground)" }}>
+          <h1 className="font-display text-5xl font-black tracking-tight md:text-7xl text-white">
             {af ? "Oor Ons" : "About Us"}
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed" style={{ color: "rgba(250,246,236,0.7)" }}>
+          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-white/60">
             {af
-              ? <>Ons is nie net 'n meme-bladsy nie. Ons is{" "}<em style={{ color: "var(--lime)", fontStyle: "normal", fontWeight: 700 }}>die meme-bladsy</em>{" "}vir Suid-Afrikaners wat weet waarvan ons praat.</>
-              : <>We're not just a meme page. We're{" "}<em style={{ color: "var(--lime)", fontStyle: "normal", fontWeight: 700 }}>the meme page</em>{" "}for South Africans who know what we're talking about.</>
+              ? <>Ons is nie net 'n meme-bladsy nie. Ons is{" "}<em className="not-italic font-bold text-white underline decoration-dashed decoration-white/50 underline-offset-4">die meme-bladsy</em>{" "}vir Suid-Afrikaners wat weet waarvan ons praat.</>
+              : <>We're not just a meme page. We're{" "}<em className="not-italic font-bold text-white underline decoration-dashed decoration-white/50 underline-offset-4">the meme page</em>{" "}for South Africans who know what we're talking about.</>
             }
           </p>
         </div>
@@ -128,7 +159,7 @@ export function OorOnsContent() {
                     {i < milestones[language].length - 1 && <div className="w-px flex-1 bg-border my-1" />}
                   </div>
                   <div className={`pb-8 ${i === milestones[language].length - 1 ? "pb-0" : ""}`}>
-                    <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "var(--terra)" }}>{year}</p>
+                    <p className="text-xs font-bold uppercase tracking-widest mb-1 text-muted-foreground">{year}</p>
                     <h3 className="font-display text-base font-bold text-foreground">{title}</h3>
                     <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{body}</p>
                   </div>
@@ -163,19 +194,22 @@ export function OorOnsContent() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-24 section-ink relative overflow-hidden">
-        <div aria-hidden className="absolute inset-0 bg-dot-grid opacity-10 pointer-events-none" style={{ color: "var(--lime)" }} />
+      <section className="py-20 md:py-24 section-charcoal relative overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute right-10 top-10 h-28 w-28 rotate-45 border border-dashed border-white/10"
+        />
         <div className="relative mx-auto max-w-3xl px-4 text-center">
-          <p className="font-display text-5xl font-black tracking-tight mb-6 md:text-6xl" style={{ color: "var(--ink-foreground)" }}>
-            {af ? <>Klaar gelees?<br /><span style={{ color: "var(--lime)" }}>Koop iets.</span></> : <>Done reading?<br /><span style={{ color: "var(--lime)" }}>Buy something.</span></>}
+          <p className="font-display text-5xl font-black tracking-tight mb-6 md:text-6xl text-white">
+            {af ? <>Klaar gelees?<br /><span className="font-script font-normal tracking-wide text-white/85">Koop iets.</span></> : <>Done reading?<br /><span className="font-script font-normal tracking-wide text-white/85">Buy something.</span></>}
           </p>
-          <p className="mb-8 text-lg" style={{ color: "rgba(250,246,236,0.65)" }}>
+          <p className="mb-8 text-lg text-white/55">
             {af
               ? "Die beste manier om deel van die familie te word is om iets te dra wat almal laat weet jy is dit."
               : "The best way to become part of the family is to wear something that lets everyone know you are."}
           </p>
           <Link href="/shop">
-            <Button size="lg" className="gap-2 font-bold px-10 text-base" style={{ background: "var(--lime)", color: "var(--ink)" }}>
+            <Button size="lg" className="gap-2 font-bold px-10 text-base">
               {af ? "Sien ons winkel" : "See our shop"}
               <ArrowRight className="h-4 w-4" />
             </Button>

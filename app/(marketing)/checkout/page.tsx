@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function CheckoutPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
+    <div className="page-shell max-w-5xl">
       <CheckoutForm />
     </div>
   )

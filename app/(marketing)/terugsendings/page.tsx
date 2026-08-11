@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Card, CardContent } from "@/components/ui/card"
+import { LegalShell } from "@/components/brand/legal-shell"
 
 export const metadata: Metadata = {
   title: "Terugsendings & Terugbetalings",
@@ -8,15 +9,11 @@ export const metadata: Metadata = {
 
 export default function TerugsendingesPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">Terugsendings & Terugbetalings</h1>
-        <p className="text-xl text-muted-foreground">
-          Ons wil hê jy moet 100% tevrede wees met jou aankoop
-        </p>
-      </div>
-
-      <div className="space-y-6">
+    <LegalShell
+      title="Terugsendings & Terugbetalings"
+      subtitle="Ons wil hê jy moet 100% tevrede wees met jou aankoop"
+    >
+      <div className="space-y-5">
         <Card>
           <CardContent className="pt-6">
             <h2 className="text-2xl font-bold mb-4">Ons Terugsendings Beleid</h2>
@@ -25,7 +22,7 @@ export default function TerugsendingesPage() {
                 Ons verstaan dat soms dinge nie uitwerk soos beplan nie. Daarom bied ons 'n eenvoudige 
                 en regverdige terugsendings beleid aan.
               </p>
-              <div className="bg-primary/10 border-l-4 border-primary p-4 rounded">
+              <div className="bg-primary/10 border-l-2 border-white/40 p-4 rounded">
                 <p className="font-semibold text-foreground">
                   Jy het 14 dae vanaf ontvangs van jou bestelling om items terug te stuur.
                 </p>
@@ -94,7 +91,7 @@ export default function TerugsendingesPage() {
                 in kennis stel of jou terugbetaling goedgekeur of afgekeur is.
               </p>
               <div className="space-y-3 mt-4">
-                <div className="border-l-4 border-primary pl-4">
+                <div className="border-l-2 border-white/40 pl-4">
                   <h3 className="font-semibold text-foreground mb-1">Goedgekeurde Terugbetalings</h3>
                   <p className="text-sm">
                     Sal binne 5-10 werksdae verwerk word na jou oorspronklike betaalmetode
@@ -177,12 +174,12 @@ export default function TerugsendingesPage() {
           <p className="text-muted-foreground mb-4">
             Het jy vrae oor terugsendings?
           </p>
-          <a href="/kontak" className="text-primary hover:underline font-semibold">
+          <a href="/kontak" className="text-foreground hover:underline font-semibold">
             Kontak Ons →
           </a>
         </div>
       </div>
-    </div>
+    </LegalShell>
   )
 }
 

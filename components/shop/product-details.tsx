@@ -84,7 +84,7 @@ function StarRating({ rating }: { rating: number }) {
       {[1, 2, 3, 4, 5].map((n) => (
         <Star
           key={n}
-          className={`h-4 w-4 ${n <= rating ? "fill-primary text-primary" : "fill-muted text-muted"}`}
+          className={`h-4 w-4 ${n <= rating ? "fill-white text-white" : "fill-muted text-muted"}`}
         />
       ))}
     </div>
@@ -146,7 +146,7 @@ export function ProductDetails({ product, relatedProducts }: ProductDetailsProps
         {/* Image */}
         <div className="relative">
           <div className="sticky top-24">
-            <div className="relative aspect-square overflow-hidden rounded-2xl border border-border bg-card shadow-lg">
+            <div className="media-frame relative aspect-square">
               {product.image_url ? (
                 <Image
                   src={product.image_url}
@@ -158,21 +158,17 @@ export function ProductDetails({ product, relatedProducts }: ProductDetailsProps
               ) : (
                 <div
                   className="flex h-full w-full items-center justify-center"
-                  style={{ background: "var(--lime)", opacity: 0.15 }}
+                  style={{ background: "var(--charcoal)" }}
                 >
-                  <ShoppingCart className="h-16 w-16 text-foreground/30" />
+                  <ShoppingCart className="h-16 w-16 text-white/25" />
                 </div>
               )}
               {product.is_limited_drop && (
-                <Badge className="absolute left-4 top-4 badge-lime">
+                <Badge variant="punch" className="absolute left-4 top-4">
                   {t("shop.limitedDrop")}
                 </Badge>
               )}
             </div>
-            {/* Placeholder for additional images */}
-            <p className="mt-3 text-center text-xs text-muted-foreground">
-              REPLACE: Add multiple product photos for gallery view
-            </p>
           </div>
         </div>
 
@@ -321,11 +317,6 @@ export function ProductDetails({ product, relatedProducts }: ProductDetailsProps
           <Button
             size="lg"
             className="w-full gap-2 font-bold text-base"
-            style={
-              !isOutOfStock
-                ? { background: "var(--ink)", color: "var(--ink-foreground)" }
-                : undefined
-            }
             onClick={handleAddToCart}
             disabled={isOutOfStock}
           >
@@ -387,10 +378,10 @@ export function ProductDetails({ product, relatedProducts }: ProductDetailsProps
                 return (
                   <div key={star} className="flex items-center gap-2 text-sm">
                     <span className="w-4 text-right text-muted-foreground">{star}</span>
-                    <Star className="h-3 w-3 fill-primary text-primary shrink-0" />
+                    <Star className="h-3 w-3 fill-white text-white shrink-0" />
                     <div className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
                       <div
-                        className="h-full rounded-full bg-primary"
+                        className="h-full rounded-full bg-white"
                         style={{ width: `${pct}%` }}
                       />
                     </div>

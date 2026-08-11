@@ -20,7 +20,11 @@ export function MemeOfDay({ meme }: MemeOfDayProps) {
   const handleShare = async () => {
     if (navigator.share) {
       try {
-        await navigator.share({ title: "Jy Alweer?", text: caption, url: meme.facebook_link || window.location.href })
+        await navigator.share({
+          title: "Jy Alweer?",
+          text: caption,
+          url: meme.facebook_link || window.location.href,
+        })
       } catch {
         // cancelled
       }
@@ -28,26 +32,26 @@ export function MemeOfDay({ meme }: MemeOfDayProps) {
   }
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "var(--ink)" }}>
-      {/* Lime accent bar */}
-      <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "var(--lime)" }} />
+    <section className="relative overflow-hidden py-20 md:py-28 section-ink">
+      {/* Decorative diamond outlines */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-8 top-12 h-24 w-24 rotate-45 border border-dashed border-white/10 hidden md:block"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-10 bottom-16 h-16 w-16 rotate-45 border border-white/8 hidden md:block"
+      />
 
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          {/* Copy side */}
           <div className="space-y-6 animate-slide-left">
-            <div
-              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-bold"
-              style={{ background: "var(--lime)", color: "var(--ink)" }}
-            >
+            <div className="inline-flex items-center gap-2 rounded-full badge-punch px-4 py-1.5 text-sm">
               <span>😂</span>
               <span>{t("home.meme.title")}</span>
             </div>
 
-            <p
-              className="font-display text-4xl font-black leading-tight md:text-5xl"
-              style={{ color: "var(--ink-foreground)" }}
-            >
+            <p className="font-display text-4xl font-black leading-tight md:text-5xl text-white">
               {caption}
             </p>
 
@@ -56,9 +60,8 @@ export function MemeOfDay({ meme }: MemeOfDayProps) {
                 <a href={meme.facebook_link} target="_blank" rel="noopener noreferrer">
                   <Button
                     size="sm"
-                    className="gap-2 border-white/20 text-white hover:bg-white/10"
                     variant="outline"
-                    style={{ background: "transparent", borderColor: "rgba(255,255,255,0.2)", color: "var(--ink-foreground)" }}
+                    className="gap-2 border-dashed"
                   >
                     <Facebook className="h-4 w-4" />
                     {t("memes.facebook")}
@@ -68,9 +71,8 @@ export function MemeOfDay({ meme }: MemeOfDayProps) {
               <Button
                 size="sm"
                 variant="ghost"
-                className="gap-2"
+                className="gap-2 text-white/80 hover:text-white hover:bg-white/10"
                 onClick={handleShare}
-                style={{ color: "var(--ink-foreground)" }}
               >
                 <Share2 className="h-4 w-4" />
                 {t("memes.share")}
@@ -78,20 +80,22 @@ export function MemeOfDay({ meme }: MemeOfDayProps) {
             </div>
           </div>
 
-          {/* Image side */}
           <div className="animate-slide-right">
-            <div className="relative overflow-hidden rounded-2xl border-2 border-white/10 shadow-2xl">
+            <div className="relative">
+              {/* Diamond-inspired frame */}
               <div
-                className="absolute inset-0 pointer-events-none z-10 rounded-2xl"
-                style={{ boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.08)" }}
+                aria-hidden
+                className="absolute -inset-3 border border-dashed border-white/15 rounded-2xl"
               />
-              <Image
-                src={meme.image_url || "/placeholder.svg"}
-                alt={caption}
-                width={600}
-                height={600}
-                className="w-full object-cover"
-              />
+              <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl neon-glow">
+                <Image
+                  src={meme.image_url || "/placeholder.svg"}
+                  alt={caption}
+                  width={600}
+                  height={600}
+                  className="w-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>

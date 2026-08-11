@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Card, CardContent } from "@/components/ui/card"
+import { LegalShell } from "@/components/brand/legal-shell"
 
 export const metadata: Metadata = {
   title: "Versendingsbeleid",
@@ -8,15 +9,11 @@ export const metadata: Metadata = {
 
 export default function VersendingsbeleidPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">Versendingsbeleid</h1>
-        <p className="text-xl text-muted-foreground">
-          Alles wat jy moet weet oor ons versending en aflewering
-        </p>
-      </div>
-
-      <div className="space-y-6">
+    <LegalShell
+      title="Versendingsbeleid"
+      subtitle="Alles wat jy moet weet oor ons versending en aflewering"
+    >
+      <div className="space-y-5">
         <Card>
           <CardContent className="pt-6">
             <h2 className="text-2xl font-bold mb-4">Versendingsopsies</h2>
@@ -26,15 +23,15 @@ export default function VersendingsbeleidPage() {
                 gerespekteerde koeriers om te verseker dat jou bestelling veilig en betyds by jou aankom.
               </p>
               <div className="space-y-3">
-                <div className="border-l-4 border-primary pl-4">
+                <div className="border-l-2 border-white/40 pl-4">
                   <h3 className="font-semibold text-foreground mb-1">Standaard Aflewering</h3>
                   <p className="text-sm">3-5 werksdae | R80 - R120 (afhangend van area)</p>
                 </div>
-                <div className="border-l-4 border-primary pl-4">
+                <div className="border-l-2 border-white/40 pl-4">
                   <h3 className="font-semibold text-foreground mb-1">Vinnige Aflewering</h3>
                   <p className="text-sm">1-2 werksdae | R150 - R200 (beskikbaar in hoofstede)</p>
                 </div>
-                <div className="border-l-4 border-primary pl-4">
+                <div className="border-l-2 border-white/40 pl-4">
                   <h3 className="font-semibold text-foreground mb-1">Gratis Versending</h3>
                   <p className="text-sm">Op bestellings bo R500 (standaard aflewering)</p>
                 </div>
@@ -147,12 +144,12 @@ export default function VersendingsbeleidPage() {
           <p className="text-muted-foreground mb-4">
             Het jy nog vrae oor versending?
           </p>
-          <a href="/kontak" className="text-primary hover:underline font-semibold">
+          <a href="/kontak" className="text-foreground hover:underline font-semibold">
             Kontak Ons →
           </a>
         </div>
       </div>
-    </div>
+    </LegalShell>
   )
 }
 

@@ -65,31 +65,18 @@ export function MemesGallery({ memes }: MemesGalleryProps) {
 
   return (
     <>
-      {/* Header */}
-      <div className="mb-10">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="mb-2 text-sm font-bold uppercase tracking-widest text-muted-foreground">
-              {language === "af" ? "Ons versameling" : "Our collection"}
-            </p>
-            <h1 className="font-display text-4xl font-black tracking-tight text-foreground md:text-5xl">
-              {t("memes.title")}
-            </h1>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            {filtered.length} meme{filtered.length !== 1 ? "s" : ""}
-          </p>
-        </div>
-
-        {/* Search */}
-        <div className="mt-6 relative max-w-md">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-sm text-muted-foreground">
+          {filtered.length} meme{filtered.length !== 1 ? "s" : ""}
+        </p>
+        <div className="relative max-w-md w-full sm:w-80">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             type="search"
             placeholder={language === "af" ? "Soek memes..." : "Search memes..."}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="pl-10 pr-10 h-11"
+            className="pl-10 pr-10 h-11 rounded-xl"
           />
           {query && (
             <button
@@ -121,7 +108,7 @@ export function MemesGallery({ memes }: MemesGalleryProps) {
             return (
               <div
                 key={meme.id}
-                className="mb-4 break-inside-avoid cursor-pointer overflow-hidden rounded-xl border border-border bg-card card-lift group"
+                className="mb-4 break-inside-avoid cursor-pointer overflow-hidden rounded-2xl border border-border bg-card card-lift group"
                 onClick={() => setSelectedMeme(meme)}
                 style={{ animationDelay: `${(i % 9) * 50}ms` }}
               >
@@ -136,7 +123,7 @@ export function MemesGallery({ memes }: MemesGalleryProps) {
                   />
                   {meme.is_featured && (
                     <Badge
-                      className="absolute left-3 top-3 badge-lime gap-1"
+                      className="absolute left-3 top-3 badge-punch gap-1"
                     >
                       <Star className="h-3 w-3 fill-current" />
                       {language === "af" ? "Uitgelig" : "Featured"}

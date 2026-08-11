@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Card, CardContent } from "@/components/ui/card"
+import { LegalShell } from "@/components/brand/legal-shell"
 
 export const metadata: Metadata = {
   title: "Privaatheidsbeleid",
@@ -8,15 +9,8 @@ export const metadata: Metadata = {
 
 export default function PrivaatheidsbeleidPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">Privaatheidsbeleid</h1>
-        <p className="text-xl text-muted-foreground">
-          Laas opgedateer: {new Date().toLocaleDateString('af-ZA', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </p>
-      </div>
-
-      <div className="space-y-6">
+    <LegalShell title="Privaatheidsbeleid" subtitle="Laas opgedateer: 1 Februarie 2026">
+      <div className="space-y-5">
         <Card>
           <CardContent className="pt-6">
             <div className="space-y-4 text-muted-foreground">
@@ -36,7 +30,7 @@ export default function PrivaatheidsbeleidPage() {
               <p>Ons versamel die volgende tipes inligting:</p>
               
               <div className="space-y-3">
-                <div className="border-l-4 border-primary pl-4">
+                <div className="border-l-2 border-white/40 pl-4">
                   <h3 className="font-semibold text-foreground mb-1">Persoonlike Inligting</h3>
                   <ul className="text-sm list-disc list-inside ml-2 space-y-1">
                     <li>Naam en van</li>
@@ -47,7 +41,7 @@ export default function PrivaatheidsbeleidPage() {
                   </ul>
                 </div>
 
-                <div className="border-l-4 border-primary pl-4">
+                <div className="border-l-2 border-white/40 pl-4">
                   <h3 className="font-semibold text-foreground mb-1">Outomatiese Inligting</h3>
                   <ul className="text-sm list-disc list-inside ml-2 space-y-1">
                     <li>IP-adres</li>
@@ -206,7 +200,7 @@ export default function PrivaatheidsbeleidPage() {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </LegalShell>
   )
 }
 
